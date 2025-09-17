@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaBehance } from "react-icons/fa";
 
 export default function About() {
   return (
     <section className="flex justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full">
-      <div className="flex flex-col gap-12 border-r-6 border-gray-500 pr-16 w-1/2">
+      <div className="flex flex-col gap-20 border-r-6 border-gray-500 pr-16 w-1/2 justify-start items-start h-1/2">
         <h2 className="text-bold text-5xl">
           Desenvolvedor de Software | Front-end | Mobile | Java | Flutter |
           Next.js | Firebase
@@ -22,24 +22,50 @@ export default function About() {
           e qualidade.
         </p>
       </div>
-      <div className="flex flex-col gap-12 w-1/2">
-        <h2 className="text-bold text-5xl">
+      <div className="flex flex-col gap-6 w-1/2 justify-start items-start h-1/2">
+        <h2 className="text-bold text-5xl mb-14">
           Além dos commits e branches: A jornada e identidade por trás do
           código.
         </h2>
-        <p className="text-medium text-2xl">
-          Que tal se conectar comigo nas redes sociais abaixo e saber mais sobre
-          meu trabalho ?
-        </p>
-        <div>
-          <Link
-            href="https://www.linkedin.com/in/seu-usuario"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-blue-600 transition-colors"
-          >
-            <FaLinkedin size={36} />
-          </Link>
+        <div className="flex flex-col space-y-8">
+          <p className="text-medium text-2xl">
+            Que tal se conectar comigo nas redes sociais abaixo e saber mais
+            sobre meu trabalho ? Vamos conversar !
+          </p>
+          <div className="flex space-x-8">
+            <Link
+              href="https://www.linkedin.com/in/claudinei-de-lima-690b4021a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              <FaLinkedin size={36} />
+            </Link>
+            <Link
+              href="https://github.com/cfrdlima"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              <FaGithub size={36} />
+            </Link>
+            <Link
+              href="https://www.instagram.com/claudineidelima2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              <FaInstagram size={36} />
+            </Link>
+            <Link
+              href="https://www.behance.net/cfrdlxava50c0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              <FaBehance size={40} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
