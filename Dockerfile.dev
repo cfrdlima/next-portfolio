@@ -1,0 +1,20 @@
+# Ambiente de desenvolvimento
+FROM node:18-alpine AS development
+
+WORKDIR /app
+
+# Copia apenas package.json e package-lock.json para instalar deps
+COPY package*.json ./
+
+# Instala TUDO (incluindo devDependencies)
+RUN npm install
+
+# Copia o resto do código
+COPY . .
+
+# Garante que o binário "next" esteja no PATH
+ENV PATH=/app/node_modules/.bin:$PATH
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
