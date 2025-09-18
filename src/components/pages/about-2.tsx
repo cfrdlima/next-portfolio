@@ -3,7 +3,10 @@ import { FaGithub, FaLinkedin, FaInstagram, FaBehance } from "react-icons/fa";
 
 export default function About() {
   return (
-    <section className="flex justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full">
+    <section
+      id="about"
+      className="flex justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full"
+    >
       <div className="flex flex-col gap-20 border-r-6 border-gray-500 pr-16 w-1/2 justify-start items-start h-1/2">
         <h2 className="text-bold text-5xl">
           Desenvolvedor de Software | Front-end | Mobile | Java | Flutter |

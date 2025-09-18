@@ -11,13 +11,13 @@ export default function Header() {
             <Link href="/">Início</Link>
           </li>
           <li className="hover:text-2xl font-semibold transition-all">
-            <Link href="/skills">Skills</Link>
+            <Link href="#about">Sobre</Link>
+          </li>
+          <li className="hover:text-2xl font-semibold transition-all">
+            <Link href="#skills">Skills</Link>
           </li>
           <li className="hover:text-2xl font-semibold transition-all">
             <Link href="/projects">Projetos</Link>
-          </li>
-          <li className="hover:text-2xl font-semibold transition-all">
-            <Link href="/about">Sobre</Link>
           </li>
           <li className="hover:text-2xl font-semibold transition-all">
             <Link href="/contact">Contato</Link>
