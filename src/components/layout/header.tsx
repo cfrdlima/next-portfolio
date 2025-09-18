@@ -3,7 +3,7 @@ import { ThemeToggle } from "./toggle-theme";
 
 export default function Header() {
   return (
-    <header className="w-full flex justify-between items-center p-8 fixed z-50 w-screen bg-background/80 backdrop-blur-md border-b border-gray-300 dark:border-gray-700">
+    <header className="w-full flex justify-between items-center py-8 px-20 fixed z-50 w-screen bg-background/80 backdrop-blur-md border-b border-gray-300 dark:border-gray-700">
       {/* <h1 className="text-2xl font-bold">Claudinei de Lima</h1> */}
       <nav>
         <ul className="flex space-x-12 text-xl">
