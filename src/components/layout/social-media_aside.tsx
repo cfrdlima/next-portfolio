@@ -44,7 +44,20 @@ export default function SocialMediaAside() {
           transition={{ delay: i * 0.2, duration: 0.4 }}
           className="relative z-10"
         >
-          <Link href={item.href} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={
+              item.href.includes("github")
+                ? "GitHub de Claudinei"
+                : item.href.includes("linkedin")
+                ? "LinkedIn de Claudinei"
+                : item.href.includes("instagram")
+                ? "Instagram de Claudinei"
+                : "Behance de Claudinei"
+            }
+          >
             <motion.div
               className="flex items-center justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.2 }}

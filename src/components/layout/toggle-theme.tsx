@@ -18,6 +18,9 @@ export function ThemeToggle() {
       <Button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="cursor-pointer rounded-full"
+        aria-label={
+          theme === "dark" ? "Mudar para modo claro" : "Mudar para modo escuro"
+        }
       >
         {theme === "dark" ? (
           <FaCloudSun size={32} />

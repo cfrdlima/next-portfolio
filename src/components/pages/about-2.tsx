@@ -7,15 +7,22 @@ const socialLinks = [
   {
     icon: <FaLinkedin size={36} />,
     href: "https://www.linkedin.com/in/claudinei-de-lima-690b4021a/",
+    label: "LinkedIn de Claudinei",
   },
-  { icon: <FaGithub size={36} />, href: "https://github.com/cfrdlima" },
+  {
+    icon: <FaGithub size={36} />,
+    href: "https://github.com/cfrdlima",
+    label: "GitHub de Claudinei",
+  },
   {
     icon: <FaInstagram size={36} />,
     href: "https://www.instagram.com/claudineidelima2/",
+    label: "Instagram de Claudinei",
   },
   {
     icon: <FaBehance size={40} />,
     href: "https://www.behance.net/cfrdlxava50c0",
+    label: "Behance de Claudinei",
   },
 ];
 
@@ -83,6 +90,7 @@ export default function About() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={link.label} // ← Acessibilidade adicionada
                   className="text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   {link.icon}
