@@ -22,13 +22,18 @@ const socialLinks = [
 export default function SocialMediaAside() {
   return (
     <motion.aside
-      className="fixed top-0 left-3 h-screen flex flex-col items-center justify-center gap-6"
+      className="fixed top-0 left-5 h-screen flex flex-col items-center justify-center gap-6"
       initial={{ opacity: 0, x: -40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
     >
       {/* Linha vertical contínua atrás dos ícones */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-screen w-px bg-gray-300" />
+      <motion.div
+        initial={{ height: 0 }}
+        animate={{ height: "100%" }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px bg-gray-300"
+      />
 
       {/* Ícones */}
       {socialLinks.map((item, i) => (
@@ -40,9 +45,13 @@ export default function SocialMediaAside() {
           className="relative z-10"
         >
           <Link href={item.href} target="_blank" rel="noopener noreferrer">
-            <div className="flex items-center justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300">
+            <motion.div
+              className="flex items-center justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            >
               {item.icon}
-            </div>
+            </motion.div>
           </Link>
         </motion.div>
       ))}
