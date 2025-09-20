@@ -61,7 +61,7 @@ export default function About() {
         transition={{ duration: 0.8 }}
         className="flex flex-col gap-6 w-1/2 justify-start items-start"
       >
-        <h2 className="font-bold text-5xl mb-14">
+        <h2 className="font-bold text-5xl mb-24">
           Além dos commits e branches: A jornada e identidade por trás do
           código.
         </h2>

@@ -59,8 +59,8 @@ export default function SocialMediaAside() {
             }
           >
             <motion.div
-              className="flex items-center justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.2 }}
+              className="flex items-center text-white justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.2, transition: { duration: 0 } }} // instantâneo
               whileTap={{ scale: 0.9 }}
             >
               {item.icon}
