@@ -4,21 +4,19 @@ services:
   development:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
+      target: development # Use the 'development' stage from Dockerfile.prod for development
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
+      - .:/app:z
     command: npm run dev
 
   production:
     build:
       context: .
       dockerfile: Dockerfile.prod
-      target: production
+      target: production # Use the 'production' stage from Dockerfile.prod for production
     ports:
       - "3000:3000"
     environment:
