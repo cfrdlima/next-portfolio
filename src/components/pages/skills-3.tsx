@@ -25,12 +25,17 @@ export default function Skills() {
         Aqui é onde ficam as habilidades e ferramentas que domino e que me
         permitem criar soluções criativas e funcionais para meus clientes.
       </h2>
-      <Card className="relative flex flex-col justify-around w-full p-6 max-w-lg h-1/2 hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden">
+      <Card
+        className="group relative flex flex-col justify-around w-full p-6 max-w-lg h-1/2 
+                 hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden"
+      >
         <Image
           src="/web-development.webp"
           alt="Fundo desenvolvimento web"
           fill
-          className="object-cover rounded-2xl -z-10 filter opacity-10 transition-opacity  duration-300 ease-in-out"
+          className="object-cover rounded-2xl -z-10 filter opacity-10 
+               transition-opacity duration-300 ease-in-out 
+               group-hover:opacity-30"
         />
         <CardHeader className="space-y-4">
           <CardTitle className="flex text-3xl items-center justify-center gap-4">
