@@ -1,54 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { FaGlobe } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative flex flex-row justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full"
+      className="flex flex-col justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full"
     >
-      <div className="flex flex-col gap-12 border-r-4 border-gray-400 pr-16 w-1/2 justify-start items-start">
-        <h2 className="font-bold text-5xl">Minhas Skills</h2>
-        <p className="font-medium text-2xl">
-          Tenho experiência com diversas tecnologias e ferramentas que me
-          permitem desenvolver soluções completas e eficientes. Aqui estão
-          algumas das minhas principais skills:
-        </p>
-        <ul className="list-disc list-inside font-medium text-2xl space-y-2">
-          <li>Java: Desenvolvimento de aplicações robustas e escaláveis.</li>
-          <li>
-            Flutter: Criação de aplicativos móveis nativos para Android e iOS.
-          </li>
-          <li>
-            Next.js: Desenvolvimento de aplicações web modernas e performáticas.
-          </li>
-          <li>
-            React: Construção de interfaces de usuário interativas e
-            responsivas.
-          </li>
-          <li>
-            Firebase: Integração de serviços backend como autenticação, banco de
-            dados e armazenamento.
-          </li>
-          <li>
-            Git: Controle de versão e colaboração em projetos de software.
-          </li>
-          <li>HTML, CSS e JavaScript: Fundamentos do desenvolvimento web.</li>
-        </ul>
-      </div>
-      <div className="flex flex-col gap-6 w-1/2 justify-start items-start">
-        <h2 className="font-bold text-5xl mb-24">Ferramentas e Tecnologias</h2>
-        <div className="flex flex-col space-y-6">
-          <h3 className="font-bold text-3xl">Ferramentas de Desenvolvimento</h3>
-          <ul className="list-disc list-inside font-medium text-2xl space-y-2">
-            <li>IntelliJ IDEA</li>
-            <li>Android Studio</li>
-            <li>Visual Studio Code</li>
-            <li>Postman</li>
+      <h1 className="font-bold text-5xl">Minha caixinha de ferramentas</h1>
+      <h2 className="font-medium text-2xl text-center">
+        Aqui é onde ficam as habilidades e ferramentas que domino e que me
+        permitem criar soluções criativas e funcionais para meus clientes.
+      </h2>
+      <Card className="relative flex flex-col justify-around w-full p-6 max-w-lg h-1/2 hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden">
+        <Image
+          src="/web-development.webp"
+          alt="Fundo desenvolvimento web"
+          fill
+          className="object-cover rounded-2xl -z-10 filter opacity-10 transition-opacity  duration-300 ease-in-out"
+        />
+        <CardHeader className="space-y-4">
+          <CardTitle className="flex text-3xl items-center justify-center gap-4">
+            <h3>Desenvolvimento Web</h3>
+            <FaGlobe size={28} />
+          </CardTitle>
+          <CardDescription className="text-xl text-center">
+            Aqui estão algumas das tecnologias que utilizo para desenvolver
+            aplicações web.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <h4 className="font-semibold text-2xl text-center">
+            Alguns Projetos web:
+          </h4>
+          <ul className="flex flex-col gap-2 text-xl justify-center items-start list-disc list-inside">
+            <li className="hover:underline font-medium transition-all">
+              <Link href="/">Portfólio</Link>
+            </li>
+            <li className="hover:underline font-medium transition-all">
+              <Link href="#about">Instagram Login Page</Link>
+            </li>
+            <li className="hover:underline font-medium transition-all">
+              <Link href="#skills">Formatta.aq</Link>
+            </li>
+            <li className="hover:underline font-medium transition-all">
+              <Link href="/projects">Já vi esse filme?</Link>
+            </li>
           </ul>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </section>
   );
 }
