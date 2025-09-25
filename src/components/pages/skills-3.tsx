@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { FaGlobe, FaMobile, FaGamepad } from "react-icons/fa";
 import Link from "next/link";
+import SkillsTicker from "../layout/skills-ticker";
 
 export default function Skills() {
   return (
@@ -105,6 +106,7 @@ export default function Skills() {
           </CardContent>
         </Card>
       </div>
+      <SkillsTicker />
     </section>
   );
 }
