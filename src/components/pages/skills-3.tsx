@@ -51,7 +51,7 @@ export default function Skills() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="flex flex-col justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full"
+      className="min-h-screen flex flex-col justify-center items-center gap-12 overflow-hidden w-full pt-16"
     >
       <h1 className="font-bold text-5xl">Minha caixinha de ferramentas</h1>
       <h2 className="font-medium text-2xl text-center max-w-4xl">
@@ -63,7 +63,7 @@ export default function Skills() {
         {skillsData.map((skill) => (
           <Card
             key={skill.title}
-            className="group relative flex flex-col justify-between w-full px-4 py-8 max-w-lg h-full border-2 border-gray-300 dark:border-gray-700 rounded-2xl hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden"
+            className="group relative flex flex-col justify-between w-full px-4 py-8 max-w-lg h-full border-2 border-gray-300 dark:border-gray-700 rounded-2xl hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden bg-primary/15"
           >
             <CardHeader className="space-y-8">
               <CardTitle className="flex flex-row items-center gap-4 justify-center">
