@@ -33,14 +33,14 @@ export default function About() {
       id="about"
       className="relative flex flex-row justify-center items-center h-screen gap-12 overflow-hidden text-justify w-full"
     >
-      <div className="flex flex-row justify-center items-center h-full gap-24 max-lg:px-12 max-lg:gap-12 max-lg:flex-col">
+      <div className="flex flex-row justify-center items-center h-1/2 gap-16 max-lg:px-12 max-lg:gap-12 max-lg:flex-col">
         {/* Coluna esquerda */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col gap-12 border-r-4 border-gray-400 pr-20 w-1/2 justify-start items-start"
+          className="flex flex-col gap-12 border-r-4 border-gray-400 pr-20 h-full w-1/2 justify-around items-start"
         >
           <h2 className="font-bold text-5xl">
             Desenvolvedor de Software | Front-end | Mobile | Java | Flutter |
@@ -62,7 +62,7 @@ export default function About() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col gap-6 w-1/2 justify-start items-start"
+          className="flex flex-col gap-6 w-1/2 h-full justify-around items-start"
         >
           <h2 className="font-bold text-5xl mb-24">
             Além dos commits e branches: A jornada e identidade por trás do
