@@ -72,7 +72,7 @@ const stacks = [
 
 export default function SkillsTicker() {
   return (
-    <div className="relative w-full overflow-hidden bg-primary/15 py-4">
+    <div className="relative w-full overflow-hidden bg-primary/30 py-4">
       {/* Fade lateral esquerdo */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-background to-transparent z-10" />
       {/* Fade lateral direito */}
@@ -84,7 +84,7 @@ export default function SkillsTicker() {
         transition={{
           repeat: Infinity,
           repeatType: "loop",
-          duration: 20,
+          duration: 50,
           ease: "linear",
         }}
       >
