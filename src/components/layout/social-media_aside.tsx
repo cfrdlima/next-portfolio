@@ -5,18 +5,18 @@ import { motion } from "framer-motion";
 import { FaBehance } from "react-icons/fa";
 
 const socialLinks = [
-  { icon: <Github size={24} />, href: "https://github.com/ClaudineiLima" },
+  { icon: <Github size={24} />, href: "https://github.com/cfrdlima" },
   {
     icon: <Linkedin size={24} />,
-    href: "https://www.linkedin.com/in/claudinei-lima/",
+    href: "https://www.linkedin.com/in/claudinei-de-lima-690b4021a/",
   },
   {
     icon: <Instagram size={24} />,
-    href: "https://www.instagram.com/claudinei.lima/",
+    href: "https://www.instagram.com/claudineidelima2/",
   },
   {
     icon: <FaBehance size={24} />,
-    href: "https://www.behance.net/ClaudineiLima",
+    href: "https://www.behance.net/cfrdlxava50c0",
   },
 ];
 

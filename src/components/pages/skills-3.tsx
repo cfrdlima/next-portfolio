@@ -19,9 +19,12 @@ const skillsData = [
     description: "Aqui estão alguns projetos web.",
     subtitle: "Alguns Projetos Web:",
     projects: [
-      { name: "Portfólio", href: "/" },
-      { name: "Formatta.aq", href: "#skills" },
-      { name: "Já vi esse filme?", href: "/projects" },
+      { name: "Portfólio", href: "https://github.com/cfrdlima/next-portfolio" },
+      { name: "Formatta.aq", href: "https://github.com/cfrdlima/formatta-aq" },
+      {
+        name: "Já vi esse filme?",
+        href: "https://github.com/cfrdlima/Ja-vi-esse-filme",
+      },
     ],
   },
   {
@@ -30,8 +33,11 @@ const skillsData = [
     description: "Aqui estão alguns projetos mobile.",
     subtitle: "Alguns Projetos Mobile:",
     projects: [
-      { name: "Steam Watcher", href: "/" },
-      { name: "Roká Moká (Faculdade)", href: "#about" },
+      {
+        name: "Steam Watcher",
+        href: "https://github.com/Steam-Watcher",
+      },
+      { name: "Roká Moká (Faculdade)", href: "/" },
     ],
   },
   {
@@ -39,7 +45,9 @@ const skillsData = [
     icon: <Gamepad2 size={28} />, // antes: FaGamepad
     description: "Aqui estão alguns projetos de games.",
     subtitle: "Alguns Projetos de Games:",
-    projects: [{ name: "Flappy Bird", href: "/" }],
+    projects: [
+      { name: "Flappy Bird", href: "https://github.com/cfrdlima/Flappy-Bird" },
+    ],
   },
 ];
 
@@ -82,7 +90,13 @@ export default function Skills() {
                     key={project.name}
                     className="hover:underline font-medium transition-all"
                   >
-                    <Link href={project.href}>{project.name}</Link>
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.href}
+                    >
+                      {project.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
