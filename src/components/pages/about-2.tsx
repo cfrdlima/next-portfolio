@@ -1,21 +1,22 @@
 "use client";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaInstagram, FaBehance } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Github, Linkedin, Instagram } from "lucide-react";
+import { FaBehance } from "react-icons/fa";
 
 const socialLinks = [
   {
-    icon: <FaLinkedin size={36} />,
+    icon: <Linkedin size={36} />,
     href: "https://www.linkedin.com/in/claudinei-de-lima-690b4021a/",
     label: "LinkedIn de Claudinei",
   },
   {
-    icon: <FaGithub size={36} />,
+    icon: <Github size={36} />,
     href: "https://github.com/cfrdlima",
     label: "GitHub de Claudinei",
   },
   {
-    icon: <FaInstagram size={36} />,
+    icon: <Instagram size={36} />,
     href: "https://www.instagram.com/claudineidelima2/",
     label: "Instagram de Claudinei",
   },
@@ -90,7 +91,7 @@ export default function About() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={link.label} // ← Acessibilidade adicionada
+                  aria-label={link.label}
                   className="text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   {link.icon}

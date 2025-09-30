@@ -1,16 +1,17 @@
 "use client";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaInstagram, FaBehance } from "react-icons/fa";
+import { Github, Linkedin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import { FaBehance } from "react-icons/fa";
 
 const socialLinks = [
-  { icon: <FaGithub size={24} />, href: "https://github.com/ClaudineiLima" },
+  { icon: <Github size={24} />, href: "https://github.com/ClaudineiLima" },
   {
-    icon: <FaLinkedin size={24} />,
+    icon: <Linkedin size={24} />,
     href: "https://www.linkedin.com/in/claudinei-lima/",
   },
   {
-    icon: <FaInstagram size={24} />,
+    icon: <Instagram size={24} />,
     href: "https://www.instagram.com/claudinei.lima/",
   },
   {

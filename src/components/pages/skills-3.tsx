@@ -8,14 +8,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FaGlobe, FaMobile, FaGamepad } from "react-icons/fa";
+import { Globe, Smartphone, Gamepad2 } from "lucide-react";
 import Link from "next/link";
 import SkillsTicker from "../layout/skills-ticker";
 
 const skillsData = [
   {
     title: "Desenvolvimento Web",
-    icon: <FaGlobe size={24} />,
+    icon: <Globe size={24} />, // antes: FaGlobe
     description: "Aqui estão alguns projetos web.",
     subtitle: "Alguns Projetos Web:",
     projects: [
@@ -26,7 +26,7 @@ const skillsData = [
   },
   {
     title: "Desenvolvimento Mobile",
-    icon: <FaMobile size={28} />,
+    icon: <Smartphone size={28} />, // antes: FaMobile
     description: "Aqui estão alguns projetos mobile.",
     subtitle: "Alguns Projetos Mobile:",
     projects: [
@@ -36,7 +36,7 @@ const skillsData = [
   },
   {
     title: "Desenvolvimento de Games",
-    icon: <FaGamepad size={28} />,
+    icon: <Gamepad2 size={28} />, // antes: FaGamepad
     description: "Aqui estão alguns projetos de games.",
     subtitle: "Alguns Projetos de Games:",
     projects: [{ name: "Flappy Bird", href: "/" }],
@@ -75,7 +75,7 @@ export default function Skills() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <h4 className="font-semibold text-xl">{skill.subtitle}</h4>
+              <h3 className="font-semibold text-xl">{skill.subtitle}</h3>
               <ul className="flex flex-col gap-2 text-lg list-disc list-inside items-start">
                 {skill.projects.map((project) => (
                   <li

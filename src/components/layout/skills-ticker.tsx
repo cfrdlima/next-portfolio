@@ -1,41 +1,73 @@
 "use client";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 import { FaJava } from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiSpringboot,
-  SiPostgresql,
-  SiFirebase,
-  SiJavascript,
-  SiJunit5,
-  SiJquery,
-  SiGit,
-  SiCss3,
-  SiMongodb,
-  SiRabbitmq,
-  SiHtml5,
-  SiDocker,
-  SiFlutter,
-  SiReact,
-} from "react-icons/si";
 
 const stacks = [
-  { name: "React", icon: <SiReact className="text-cyan-400" /> },
-  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
-  { name: "Flutter", icon: <SiFlutter className="text-blue-400" /> },
-  { name: "Java", icon: <FaJava className="text-red-500" /> },
-  { name: "Spring Boot", icon: <SiSpringboot className="text-green-600" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql className="text-sky-500" /> },
-  { name: "Docker", icon: <SiDocker className="text-blue-400" /> },
-  { name: "Firebase", icon: <SiFirebase className="text-red-500" /> },
-  { name: "HTML", icon: <SiHtml5 className="text-yellow-400" /> },
-  { name: "JavaScript", icon: <SiJavascript className="text-cyan-400" /> },
-  { name: "JUNIT", icon: <SiJunit5 className="text-green-400" /> },
-  { name: "JQuery", icon: <SiJquery className="text-blue-400" /> },
-  { name: "Css", icon: <SiCss3 className="text-blue-400" /> },
-  { name: "GIT", icon: <SiGit className="text-red-400" /> },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-700" /> },
-  { name: "RabbitMQ", icon: <SiRabbitmq className="text-orange-400" /> },
+  {
+    name: "React",
+    icon: <Icon icon="simple-icons:react" className="text-cyan-400" />,
+  },
+  {
+    name: "Next.js",
+    icon: <Icon icon="simple-icons:nextdotjs" className="text-white" />,
+  },
+  {
+    name: "Flutter",
+    icon: <Icon icon="simple-icons:flutter" className="text-blue-400" />,
+  },
+  {
+    name: "Java",
+    icon: <FaJava className="text-red-500" />,
+  },
+  {
+    name: "Spring Boot",
+    icon: <Icon icon="simple-icons:springboot" className="text-green-600" />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <Icon icon="simple-icons:postgresql" className="text-sky-500" />,
+  },
+  {
+    name: "Docker",
+    icon: <Icon icon="simple-icons:docker" className="text-blue-400" />,
+  },
+  {
+    name: "Firebase",
+    icon: <Icon icon="simple-icons:firebase" className="text-yellow-400" />,
+  },
+  {
+    name: "HTML",
+    icon: <Icon icon="simple-icons:html5" className="text-orange-500" />,
+  },
+  {
+    name: "JavaScript",
+    icon: <Icon icon="simple-icons:javascript" className="text-yellow-300" />,
+  },
+  {
+    name: "JUNIT",
+    icon: <Icon icon="simple-icons:junit5" className="text-green-400" />,
+  },
+  {
+    name: "JQuery",
+    icon: <Icon icon="simple-icons:jquery" className="text-blue-400" />,
+  },
+  {
+    name: "CSS",
+    icon: <Icon icon="simple-icons:css3" className="text-blue-500" />,
+  },
+  {
+    name: "GIT",
+    icon: <Icon icon="simple-icons:git" className="text-red-500" />,
+  },
+  {
+    name: "MongoDB",
+    icon: <Icon icon="simple-icons:mongodb" className="text-green-700" />,
+  },
+  {
+    name: "RabbitMQ",
+    icon: <Icon icon="simple-icons:rabbitmq" className="text-orange-400" />,
+  },
 ];
 
 export default function SkillsTicker() {
@@ -52,7 +84,7 @@ export default function SkillsTicker() {
         transition={{
           repeat: Infinity,
           repeatType: "loop",
-          duration: 20, // controla a velocidade
+          duration: 20,
           ease: "linear",
         }}
       >
