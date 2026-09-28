@@ -14,9 +14,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://next-portfolio-woad-sigma.vercel.app";
+const description =
+  "Portfólio de Claudinei de Lima, desenvolvedor de software com foco em aplicações web e mobile: Java, Flutter, Next.js e Firebase.";
+
 export const metadata: Metadata = {
-  title: "Claudinei de Lima",
-  description: "Portfolio of Claudinei de Lima - Full Stack Developer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Claudinei de Lima | Desenvolvedor de Software",
+    template: "%s | Claudinei de Lima",
+  },
+  description,
+  keywords: [
+    "Claudinei de Lima",
+    "desenvolvedor de software",
+    "portfólio",
+    "front-end",
+    "mobile",
+    "Java",
+    "Flutter",
+    "Next.js",
+    "React",
+    "Firebase",
+  ],
+  authors: [{ name: "Claudinei de Lima", url: "https://github.com/cfrdlima" }],
+  creator: "Claudinei de Lima",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: "Claudinei de Lima",
+    title: "Claudinei de Lima | Desenvolvedor de Software",
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Claudinei de Lima | Desenvolvedor de Software",
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
