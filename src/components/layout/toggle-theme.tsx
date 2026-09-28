@@ -3,13 +3,18 @@
 import { useTheme } from "next-themes";
 import { FaCloudMoon, FaCloudSun } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const subscribe = () => () => {};
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const { setTheme, resolvedTheme: theme } = useTheme();
+  // true só no cliente, evita diferença de hidratação com o tema salvo
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
+  );
 
   if (!mounted) return null;
 
