@@ -37,7 +37,7 @@ const skillsData = [
         name: "Steam Watcher",
         href: "https://github.com/Steam-Watcher",
       },
-      { name: "Roká Moká (Faculdade)", href: "/" },
+      { name: "Roká Moká (Faculdade)" },
     ],
   },
   {
@@ -59,15 +59,20 @@ export default function Skills() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="min-h-screen flex flex-col justify-center items-center gap-12 overflow-hidden w-full pt-16"
+      className="min-h-screen flex flex-col justify-center items-center gap-8 md:gap-12 overflow-hidden w-full pt-28 pb-12 md:pt-16"
     >
-      <h1 className="font-bold text-5xl">Minha caixinha de ferramentas</h1>
-      <h2 className="font-medium text-2xl text-center max-w-4xl">
+      <h1 className="font-bold text-3xl md:text-5xl text-center">
+        Minha caixinha de ferramentas
+      </h1>
+      <h2 className="font-medium text-lg md:text-2xl text-center max-w-4xl">
         Aqui é onde ficam as habilidades e ferramentas que domino e que me
         permitem criar soluções criativas e funcionais para meus clientes.
       </h2>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+      <div
+        id="projects"
+        className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:px-4 justify-items-center scroll-mt-32"
+      >
         {skillsData.map((skill) => (
           <Card
             key={skill.title}
@@ -86,17 +91,19 @@ export default function Skills() {
               <h3 className="font-semibold text-xl">{skill.subtitle}</h3>
               <ul className="flex flex-col gap-2 text-lg list-disc list-inside items-start">
                 {skill.projects.map((project) => (
-                  <li
-                    key={project.name}
-                    className="hover:underline font-medium transition-all"
-                  >
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={project.href}
-                    >
-                      {project.name}
-                    </Link>
+                  <li key={project.name} className="font-medium">
+                    {project.href ? (
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={project.href}
+                        className="hover:underline"
+                      >
+                        {project.name}
+                      </Link>
+                    ) : (
+                      project.name
+                    )}
                   </li>
                 ))}
               </ul>

@@ -4,13 +4,13 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function Start() {
   return (
-    <section className="relative flex flex-col justify-center items-center h-screen gap-6 overflow-hidden text-center from-gray-50 to-gray-100">
+    <section className="relative flex flex-col justify-center items-center min-h-screen gap-6 overflow-hidden text-center">
       {/* Título com efeito de digitação */}
       <motion.h2
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="font-bold text-8xl"
+        className="font-bold text-5xl sm:text-6xl lg:text-8xl"
       >
         <TypeAnimation
           sequence={[
@@ -29,7 +29,7 @@ export default function Start() {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.5 }}
-        className="font-medium text-4xl"
+        className="font-medium text-2xl md:text-4xl"
       >
         E eu sou desenvolvedor!
       </motion.p>

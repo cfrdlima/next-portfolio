@@ -5,7 +5,7 @@ import Start from "@/components/pages/start-1";
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen flex-col px-24">
+    <main className="mx-auto flex min-h-screen flex-col px-6 md:px-24">
       <Start />
       <About />
       <Skills />

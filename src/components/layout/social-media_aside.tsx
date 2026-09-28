@@ -22,7 +22,7 @@ const socialLinks = [
 export default function SocialMediaAside() {
   return (
     <motion.aside
-      className="fixed top-0 left-5 h-screen flex flex-col items-center justify-center gap-6"
+      className="fixed top-0 left-5 h-screen hidden md:flex flex-col items-center justify-center gap-6"
       initial={{ opacity: 0, x: -40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
