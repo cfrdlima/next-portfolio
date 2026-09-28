@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   development:
     build:
@@ -10,6 +8,10 @@ services:
       - "3000:3000"
     volumes:
       - .:/app:z
+      # Mantém node_modules e .next dentro do container, para não criar
+      # arquivos do root na pasta do projeto
+      - /app/node_modules
+      - /app/.next
     command: npm run dev
 
   production:
