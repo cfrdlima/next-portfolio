@@ -9,9 +9,9 @@ Portfólio pessoal de Claudinei de Lima, desenvolvedor de software com foco em a
 - [Next.js 16](https://nextjs.org) (App Router) + [React 19](https://react.dev)
 - [TypeScript](https://www.typescriptlang.org)
 - [Tailwind CSS 4](https://tailwindcss.com) + componentes [shadcn/ui](https://ui.shadcn.com)
-- [Framer Motion](https://motion.dev) para animações
+- [Framer Motion](https://motion.dev) para animações (via `LazyMotion`, respeitando "reduzir movimento")
 - [next-themes](https://github.com/pacocoursey/next-themes) para modo claro/escuro
-- Ícones: [react-icons](https://react-icons.github.io/react-icons), [lucide-react](https://lucide.dev) e [Iconify](https://iconify.design)
+- Ícones: [lucide-react](https://lucide.dev) para a interface e [react-icons](https://react-icons.github.io/react-icons) para logos de marcas
 
 ## Rodando localmente
 
@@ -49,11 +49,14 @@ docker compose up --build production
 src/
 ├── app/                # layout, página inicial, SEO (metadata, OG image, robots, sitemap)
 ├── components/
-│   ├── layout/         # header, alternador de tema, redes sociais, faixa de skills
-│   ├── pages/          # seções da página: início, sobre, skills
+│   ├── layout/         # header, rodapé, menu, tema, redes sociais, faixa de skills
+│   ├── sections/       # seções da página: hero, sobre, skills, projetos, contato
 │   └── ui/             # componentes base (shadcn/ui)
-└── lib/                # utilitários
+└── lib/                # utilitários e URL do site (site.ts)
 ```
+
+- **Projetos:** a lista fica em `src/components/sections/projects.tsx` (nome, descrição, tecnologias, links e status).
+- **Domínio:** a URL pública fica em `src/lib/site.ts` e é usada no SEO, no `robots` e no `sitemap`.
 
 ## Deploy
 
