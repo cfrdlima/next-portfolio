@@ -1,7 +1,5 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { socialLinks } from "../layout/social-links";
 
 const focusAreas = ["Front-end", "Mobile", "Java", "Flutter", "Next.js", "Firebase"];
 
@@ -44,7 +42,7 @@ export default function About() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col gap-8 text-lg leading-relaxed text-muted-foreground md:text-xl"
+          className="flex flex-col justify-center gap-8 text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
           <p>
             Sou o Claudinei, desenvolvedor de software com foco em aplicações
@@ -58,31 +56,6 @@ export default function About() {
             </strong>
             , trabalhando com Java, Flutter e Next.js.
           </p>
-
-          <div
-            id="contact"
-            className="flex scroll-mt-32 flex-col gap-5 rounded-2xl border bg-card p-6 md:p-8"
-          >
-            <p className="text-foreground">
-              Que tal se conectar comigo nas redes sociais e saber mais sobre
-              meu trabalho? Vamos conversar!
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              {socialLinks.map(({ name, href, icon: Icon }) => (
-                <Link
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${name} de Claudinei`}
-                  className="flex size-12 items-center justify-center rounded-xl border text-muted-foreground transition-all hover:-translate-y-1 hover:border-brand hover:text-brand"
-                >
-                  <Icon size={22} />
-                </Link>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-// seções acompanhadas no scroll; "Contato" fica dentro de "Sobre"
-const trackedIds = ["about", "skills", "projects"];
+// seções acompanhadas no scroll
+const trackedIds = ["about", "skills", "projects", "contact"];
 
 export default function NavLinks({
   links,
