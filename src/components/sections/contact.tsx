@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { m } from "framer-motion";
+import { m } from "motion/react";
 import { Check, Copy, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "../layout/social-links";

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { m } from "framer-motion";
+import { m } from "motion/react";
 import {
   ArrowUpRight,
   Gamepad2,
@@ -85,7 +85,7 @@ const projects: Project[] = [
     category: "Web",
     description:
       "Este site: portfólio pessoal com tema claro/escuro, animações e SEO.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    tags: ["Next.js", "TypeScript", "Tailwind", "Motion"],
     site: "https://claudinei-dev.vercel.app",
     image: "/projects/portfolio.webp",
     code: "https://github.com/cfrdlima/next-portfolio",

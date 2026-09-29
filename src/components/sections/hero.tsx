@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { m } from "framer-motion";
+import { m } from "motion/react";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";

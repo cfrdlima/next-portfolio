@@ -1,5 +1,5 @@
 "use client";
-import { m } from "framer-motion";
+import { m } from "motion/react";
 
 const focusAreas = ["Front-end", "Mobile", "Java", "Flutter", "Next.js", "Firebase"];
 

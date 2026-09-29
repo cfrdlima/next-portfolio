@@ -9,7 +9,7 @@ Portfólio pessoal de Claudinei de Lima, desenvolvedor de software com foco em a
 - [Next.js 16](https://nextjs.org) (App Router) + [React 19](https://react.dev)
 - [TypeScript](https://www.typescriptlang.org)
 - [Tailwind CSS 4](https://tailwindcss.com) + componentes [shadcn/ui](https://ui.shadcn.com)
-- [Framer Motion](https://motion.dev) para animações (via `LazyMotion`, respeitando "reduzir movimento")
+- [Motion](https://motion.dev) (antigo Framer Motion) para animações (via `LazyMotion`, respeitando "reduzir movimento")
 - [next-themes](https://github.com/pacocoursey/next-themes) para modo claro/escuro
 - Ícones: [lucide-react](https://lucide.dev) para a interface e [react-icons](https://react-icons.github.io/react-icons) para logos de marcas
 

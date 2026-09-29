@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { m } from "framer-motion";
+import { m } from "motion/react";
 import { socialLinks } from "./social-links";
 
 export default function SocialMediaAside() {
