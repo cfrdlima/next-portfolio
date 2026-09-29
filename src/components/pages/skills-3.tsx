@@ -8,16 +8,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Globe, Smartphone, Gamepad2 } from "lucide-react";
+import { ArrowUpRight, Gamepad2, Globe, Smartphone } from "lucide-react";
 import Link from "next/link";
 import SkillsTicker from "../layout/skills-ticker";
 
 const skillsData = [
   {
     title: "Desenvolvimento Web",
-    icon: <Globe size={24} />, // antes: FaGlobe
-    description: "Aqui estão alguns projetos web.",
-    subtitle: "Alguns Projetos Web:",
+    icon: Globe,
+    description: "Sites e aplicações web modernas, rápidas e responsivas.",
     projects: [
       { name: "Portfólio", href: "https://github.com/cfrdlima/next-portfolio" },
       { name: "Formatta.aq", href: "https://github.com/cfrdlima/formatta-aq" },
@@ -29,22 +28,17 @@ const skillsData = [
   },
   {
     title: "Desenvolvimento Mobile",
-    icon: <Smartphone size={28} />, // antes: FaMobile
-    description: "Aqui estão alguns projetos mobile.",
-    subtitle: "Alguns Projetos Mobile:",
+    icon: Smartphone,
+    description: "Apps multiplataforma com Flutter e Firebase.",
     projects: [
-      {
-        name: "Steam Watcher",
-        href: "https://github.com/Steam-Watcher",
-      },
+      { name: "Steam Watcher", href: "https://github.com/Steam-Watcher" },
       { name: "Roká Moká (Faculdade)" },
     ],
   },
   {
     title: "Desenvolvimento de Games",
-    icon: <Gamepad2 size={28} />, // antes: FaGamepad
-    description: "Aqui estão alguns projetos de games.",
-    subtitle: "Alguns Projetos de Games:",
+    icon: Gamepad2,
+    description: "Jogos e experimentos interativos.",
     projects: [
       { name: "Flappy Bird", href: "https://github.com/cfrdlima/Flappy-Bird" },
     ],
@@ -55,60 +49,75 @@ export default function Skills() {
   return (
     <motion.section
       id="skills"
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="min-h-screen flex flex-col justify-center items-center gap-8 md:gap-12 overflow-hidden w-full pt-28 pb-12 md:pt-16"
+      className="flex w-full scroll-mt-20 flex-col items-center gap-12 overflow-hidden py-24 md:min-h-svh md:py-32"
     >
-      <h1 className="font-bold text-3xl md:text-5xl text-center">
-        Minha caixinha de ferramentas
-      </h1>
-      <h2 className="font-medium text-lg md:text-2xl text-center max-w-4xl">
-        Aqui é onde ficam as habilidades e ferramentas que domino e que me
-        permitem criar soluções criativas e funcionais para meus clientes.
-      </h2>
+      <div className="flex max-w-3xl flex-col items-center gap-4 text-center">
+        <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
+          02 · Skills &amp; Projetos
+        </span>
+        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+          Minha caixinha de ferramentas
+        </h2>
+        <p className="text-lg text-muted-foreground md:text-xl">
+          As habilidades e ferramentas que domino e que me permitem criar
+          soluções criativas e funcionais para meus clientes.
+        </p>
+      </div>
 
       <div
         id="projects"
-        className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:px-4 justify-items-center scroll-mt-32"
+        className="grid w-full scroll-mt-32 grid-cols-1 gap-6 md:grid-cols-3"
       >
-        {skillsData.map((skill) => (
-          <Card
-            key={skill.title}
-            className="group relative flex flex-col justify-between w-full px-4 py-8 max-w-lg h-full border-2 border-gray-300 dark:border-gray-700 rounded-2xl hover:scale-[1.06] transition-transform duration-300 ease-in-out overflow-hidden bg-primary/15"
+        {skillsData.map(({ title, icon: Icon, description, projects }, i) => (
+          <motion.div
+            key={title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
           >
-            <CardHeader className="space-y-8">
-              <CardTitle className="flex flex-row items-center gap-4 justify-center">
-                <span className="text-2xl font-bold">{skill.title}</span>
-                {skill.icon}
-              </CardTitle>
-              <CardDescription className="text-lg">
-                {skill.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <h3 className="font-semibold text-xl">{skill.subtitle}</h3>
-              <ul className="flex flex-col gap-2 text-lg list-disc list-inside items-start">
-                {skill.projects.map((project) => (
-                  <li key={project.name} className="font-medium">
-                    {project.href ? (
-                      <Link
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={project.href}
-                        className="hover:underline"
-                      >
-                        {project.name}
-                      </Link>
-                    ) : (
-                      project.name
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+            <Card className="group h-full rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10">
+              <CardHeader className="gap-4">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
+                  <Icon className="size-6" />
+                </div>
+                <CardTitle className="text-xl font-bold">{title}</CardTitle>
+                <CardDescription className="text-base">
+                  {description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto flex flex-col gap-3">
+                <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  Projetos
+                </h3>
+                <ul className="flex flex-col divide-y">
+                  {projects.map((project) => (
+                    <li key={project.name}>
+                      {project.href ? (
+                        <Link
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={project.href}
+                          className="group/link flex items-center justify-between py-2.5 font-medium transition-colors hover:text-brand"
+                        >
+                          {project.name}
+                          <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-brand" />
+                        </Link>
+                      ) : (
+                        <span className="block py-2.5 font-medium text-muted-foreground">
+                          {project.name}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
 

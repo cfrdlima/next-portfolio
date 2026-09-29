@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { FaJava } from "react-icons/fa";
 
@@ -10,7 +9,7 @@ const stacks = [
   },
   {
     name: "Next.js",
-    icon: <Icon icon="simple-icons:nextdotjs" className="text-white" />,
+    icon: <Icon icon="simple-icons:nextdotjs" className="text-foreground" />,
   },
   {
     name: "Flutter",
@@ -72,27 +71,18 @@ const stacks = [
 
 export default function SkillsTicker() {
   return (
-    <div className="relative w-full overflow-hidden bg-primary/30 py-4">
+    <div className="group relative w-full overflow-hidden border-y py-5">
       {/* Fade lateral esquerdo */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r md:w-40 from-background to-transparent z-10" />
       {/* Fade lateral direito */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l md:w-40 from-background to-transparent z-10" />
 
-      <motion.div
-        className="flex whitespace-nowrap"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 50,
-          ease: "linear",
-        }}
-      >
+      <div className="animate-marquee flex w-max whitespace-nowrap">
         {/* bloco 1 */}
         {stacks.map((stack, i) => (
           <div
             key={`a-${i}`}
-            className="flex items-center mx-8 text-xl font-semibold text-foreground"
+            className="mx-6 flex items-center text-lg font-medium text-muted-foreground md:mx-8 md:text-xl"
           >
             <span className="mr-2 text-2xl">{stack.icon}</span>
             {stack.name}
@@ -102,13 +92,14 @@ export default function SkillsTicker() {
         {stacks.map((stack, i) => (
           <div
             key={`b-${i}`}
-            className="flex items-center mx-8 text-xl font-semibold text-foreground"
+            aria-hidden
+            className="mx-6 flex items-center text-lg font-medium text-muted-foreground md:mx-8 md:text-xl"
           >
             <span className="mr-2 text-2xl">{stack.icon}</span>
             {stack.name}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { FaCloudMoon, FaCloudSun } from "react-icons/fa";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSyncExternalStore } from "react";
 
@@ -16,23 +16,24 @@ export function ThemeToggle() {
     () => false
   );
 
-  if (!mounted) return null;
+  // placeholder do mesmo tamanho, evita o header "pular" ao hidratar
+  if (!mounted) return <div className="size-9" />;
 
   return (
-    <>
-      <Button
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="cursor-pointer rounded-full"
-        aria-label={
-          theme === "dark" ? "Mudar para modo claro" : "Mudar para modo escuro"
-        }
-      >
-        {theme === "dark" ? (
-          <FaCloudSun size={32} />
-        ) : (
-          <FaCloudMoon size={32} />
-        )}
-      </Button>
-    </>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="cursor-pointer rounded-full"
+      aria-label={
+        theme === "dark" ? "Mudar para modo claro" : "Mudar para modo escuro"
+      }
+    >
+      {theme === "dark" ? (
+        <Sun className="size-5" />
+      ) : (
+        <Moon className="size-5" />
+      )}
+    </Button>
   );
 }

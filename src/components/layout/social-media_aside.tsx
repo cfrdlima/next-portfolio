@@ -1,73 +1,42 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaBehance, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-
-const socialLinks = [
-  { icon: <FaGithub size={24} />, href: "https://github.com/cfrdlima" },
-  {
-    icon: <FaLinkedin size={24} />,
-    href: "https://www.linkedin.com/in/claudinei-de-lima-690b4021a/",
-  },
-  {
-    icon: <FaInstagram size={24} />,
-    href: "https://www.instagram.com/claudineidelima2/",
-  },
-  {
-    icon: <FaBehance size={24} />,
-    href: "https://www.behance.net/cfrdlxava50c0",
-  },
-];
+import { socialLinks } from "./social-links";
 
 export default function SocialMediaAside() {
   return (
     <motion.aside
-      className="fixed top-0 left-5 h-screen hidden md:flex flex-col items-center justify-center gap-6"
+      className="fixed bottom-0 left-6 z-40 hidden flex-col items-center gap-2 xl:flex"
       initial={{ opacity: 0, x: -40 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
     >
-      {/* Linha vertical contínua atrás dos ícones */}
-      <motion.div
-        initial={{ height: 0 }}
-        animate={{ height: "100%" }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px bg-gray-300"
-      />
-
-      {/* Ícones */}
-      {socialLinks.map((item, i) => (
+      {socialLinks.map(({ name, href, icon: Icon }, i) => (
         <motion.div
-          key={i}
+          key={name}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.2, duration: 0.4 }}
-          className="relative z-10"
+          transition={{ delay: 0.6 + i * 0.1, duration: 0.4 }}
         >
           <Link
-            href={item.href}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={
-              item.href.includes("github")
-                ? "GitHub de Claudinei"
-                : item.href.includes("linkedin")
-                ? "LinkedIn de Claudinei"
-                : item.href.includes("instagram")
-                ? "Instagram de Claudinei"
-                : "Behance de Claudinei"
-            }
+            aria-label={`${name} de Claudinei`}
+            className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-all duration-200 hover:-translate-y-1 hover:text-brand"
           >
-            <motion.div
-              className="flex items-center text-white justify-center p-2 rounded-full bg-gray-600 hover:bg-black hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.2, transition: { duration: 0 } }} // instantâneo
-              whileTap={{ scale: 0.9 }}
-            >
-              {item.icon}
-            </motion.div>
+            <Icon size={20} />
           </Link>
         </motion.div>
       ))}
+
+      {/* Linha vertical até o rodapé da tela */}
+      <motion.div
+        initial={{ height: 0 }}
+        animate={{ height: 96 }}
+        transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
+        className="w-px bg-border"
+      />
     </motion.aside>
   );
 }

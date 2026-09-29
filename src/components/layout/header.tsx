@@ -19,45 +19,61 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="fixed z-50 flex w-full items-center justify-between border-b border-gray-300 bg-background/80 px-6 py-4 backdrop-blur-md md:px-12 md:py-6 lg:px-24 lg:py-8 dark:border-gray-700">
-      {/* Menu desktop */}
-      <nav className="hidden md:block">
-        <ul className="flex space-x-8 text-xl lg:space-x-12">
-          {navLinks.map((link) => (
-            <li
-              key={link.href}
-              className="font-semibold transition-all hover:text-2xl"
-            >
-              <Link href={link.href}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header className="fixed inset-x-0 top-0 z-50 border-b bg-background/70 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20">
+        <Link
+          href="/"
+          className="font-mono text-lg font-bold tracking-tight"
+          aria-label="Claudinei de Lima, página inicial"
+        >
+          <span className="text-brand">&lt;</span>
+          claudinei
+          <span className="text-brand"> /&gt;</span>
+        </Link>
 
-      {/* Menu mobile */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild className="md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Abrir menu"
-            className="cursor-pointer"
-          >
-            <Menu className="size-7" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="min-w-48">
-          {navLinks.map((link) => (
-            <DropdownMenuItem key={link.href} asChild>
-              <Link href={link.href} className="text-lg font-semibold">
-                {link.label}
-              </Link>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+        <div className="flex items-center gap-2">
+          {/* Menu desktop */}
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-      <ThemeToggle />
+          <ThemeToggle />
+
+          {/* Menu mobile */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Abrir menu"
+                className="cursor-pointer"
+              >
+                <Menu className="size-6" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-48">
+              {navLinks.map((link) => (
+                <DropdownMenuItem key={link.href} asChild>
+                  <Link href={link.href} className="text-base font-medium">
+                    {link.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
     </header>
   );
 }
