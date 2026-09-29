@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import Header from "@/components/layout/header";
@@ -94,6 +95,8 @@ export default function RootShell({
             {children}
           </LocaleProvider>
         </ThemeProvider>
+        {/* Vercel Web Analytics: sem cookies; só coleta no deploy da Vercel */}
+        <Analytics />
       </body>
     </html>
   );

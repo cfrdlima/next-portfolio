@@ -11,7 +11,8 @@ Portfólio pessoal de Claudinei de Lima, desenvolvedor de software com foco em a
 - [Tailwind CSS 4](https://tailwindcss.com) + componentes [shadcn/ui](https://ui.shadcn.com)
 - [Motion](https://motion.dev) (antigo Framer Motion) para animações (via `LazyMotion`, respeitando "reduzir movimento")
 - [next-themes](https://github.com/pacocoursey/next-themes) para modo claro/escuro
-- Dois idiomas: português em `/` e inglês em `/en`, com dicionários próprios (sem API de tradução)
+- Dois idiomas: português em `/` e inglês em `/en`, com dicionários próprios (sem API de tradução); na primeira visita, `src/proxy.ts` leva para `/en` quem tem o navegador em inglês (a escolha no botão PT/EN fica salva em cookie e tem prioridade)
+- [Vercel Web Analytics](https://vercel.com/docs/analytics) para estatísticas de acesso, sem cookies
 - Ícones: [lucide-react](https://lucide.dev) para a interface e [react-icons](https://react-icons.github.io/react-icons) para logos de marcas
 
 ## Rodando localmente

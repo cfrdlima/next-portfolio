@@ -4,6 +4,9 @@ export type Locale = (typeof locales)[number];
 // caminho da página inicial de cada idioma
 export const localePath: Record<Locale, string> = { pt: "/", en: "/en" };
 
+// escolha manual no botão PT/EN; impede o redirecionamento automático (proxy)
+export const LOCALE_COOKIE = "locale";
+
 const pt = {
   meta: {
     htmlLang: "pt-BR",

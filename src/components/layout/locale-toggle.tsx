@@ -2,7 +2,7 @@
 
 import { Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { localePath } from "@/i18n/dictionaries";
+import { LOCALE_COOKIE, localePath } from "@/i18n/dictionaries";
 import { useI18n } from "@/i18n/locale-provider";
 
 export function LocaleToggle() {
@@ -25,6 +25,8 @@ export function LocaleToggle() {
         // mantém a seção atual (#projects etc.) ao trocar de idioma
         onClick={(e) => {
           e.preventDefault();
+          // guarda a escolha por 1 ano: o proxy deixa de redirecionar
+          document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=31536000; samesite=lax`;
           window.location.assign(href + window.location.hash);
         }}
       >
