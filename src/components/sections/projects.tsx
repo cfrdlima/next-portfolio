@@ -1,8 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { m } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Gamepad2,
+  Globe,
+  Smartphone,
+  type LucideIcon,
+} from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 type Project = {
@@ -11,7 +18,10 @@ type Project = {
   description: string;
   tags: string[];
   site?: string;
+  siteLabel?: string;
   code?: string;
+  // print em public/projects (1280x800); sem imagem, o card usa uma capa gerada
+  image?: string;
   status?: string;
   note?: string;
 };
@@ -24,6 +34,8 @@ const projects: Project[] = [
       "Jogo mobile no estilo endless runner 3D que ensina LIBRAS durante a jogabilidade, com fases organizadas por tema de vocabulário.",
     tags: ["Unity", "C#", "Supabase"],
     site: "https://librasgoweb.vercel.app",
+    siteLabel: "Painel do professor",
+    image: "/projects/libras-go.webp",
   },
   {
     name: "JoinMe",
@@ -40,6 +52,7 @@ const projects: Project[] = [
       "Plataforma que formata documentos automaticamente segundo normas acadêmicas como ABNT e APA, pensada para quem não domina as regras.",
     tags: ["Next.js", "React", "Tailwind", "Firebase"],
     site: "https://formatta-aq.vercel.app",
+    image: "/projects/formatta-aq.webp",
     status: "em desenvolvimento",
   },
   {
@@ -74,6 +87,7 @@ const projects: Project[] = [
       "Este site: portfólio pessoal com tema claro/escuro, animações e SEO.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
     site: "https://claudinei-dev.vercel.app",
+    image: "/projects/portfolio.webp",
     code: "https://github.com/cfrdlima/next-portfolio",
   },
   {
@@ -85,6 +99,40 @@ const projects: Project[] = [
     code: "https://github.com/cfrdlima/Flappy-Bird",
   },
 ];
+
+const categoryIcons: Record<Project["category"], LucideIcon> = {
+  Web: Globe,
+  Mobile: Smartphone,
+  Game: Gamepad2,
+};
+
+function ProjectCover({ project }: { project: Project }) {
+  const Icon = categoryIcons[project.category];
+  return (
+    <div className="relative -mx-2 -mt-2 aspect-[16/10] overflow-hidden rounded-xl border bg-secondary">
+      {project.image ? (
+        <Image
+          src={project.image}
+          alt={`Tela do projeto ${project.name}`}
+          fill
+          sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        // capa gerada: gradiente + ícone da categoria
+        <div
+          aria-hidden
+          className="flex size-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-brand/25 via-secondary to-card"
+        >
+          <Icon className="size-10 text-brand transition-transform duration-500 group-hover:scale-110" />
+          <span className="font-mono text-sm font-semibold text-muted-foreground">
+            {project.name}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function ProjectLink({
   href,
@@ -144,8 +192,10 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-            className="flex flex-col gap-4 rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
+            className="group flex flex-col gap-4 rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
           >
+            <ProjectCover project={project} />
+
             <div className="flex min-h-6 flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {project.category}
@@ -181,7 +231,7 @@ export default function Projects() {
                 {project.site && (
                   <ProjectLink
                     href={project.site}
-                    label="Ver site"
+                    label={project.siteLabel ?? "Ver site"}
                     project={project.name}
                     icon={<ArrowUpRight className="size-4" />}
                   />
