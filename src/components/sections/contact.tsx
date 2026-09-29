@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { m } from "framer-motion";
-import { Check, Copy, Mail } from "lucide-react";
+import { Check, Copy, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "../layout/social-links";
 
@@ -50,7 +50,7 @@ export default function Contact() {
           e-mail ou me encontre nas redes.
         </p>
 
-        <div className="flex w-full max-w-sm flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row">
+        <div className="flex w-full max-w-sm flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <Button
             asChild
             size="lg"
@@ -69,6 +69,11 @@ export default function Contact() {
           >
             {copied ? <Check /> : <Copy />}
             {copied ? "Copiado!" : "Copiar"}
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <a href="/curriculo.pdf" download="Curriculo-Claudinei-de-Lima.pdf">
+              <Download /> Baixar currículo
+            </a>
           </Button>
           {/* anuncia a cópia para leitores de tela */}
           <span className="sr-only" aria-live="polite">

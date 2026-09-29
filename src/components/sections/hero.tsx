@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { m } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -77,6 +77,11 @@ export default function Hero() {
         </Button>
         <Button asChild size="lg" variant="outline">
           <Link href="#contact">Entrar em contato</Link>
+        </Button>
+        <Button asChild size="lg" variant="ghost">
+          <a href="/curriculo.pdf" download="Curriculo-Claudinei-de-Lima.pdf">
+            <Download /> Currículo
+          </a>
         </Button>
       </m.div>
 

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Currículo — Claudinei de Lima</title>
+    <!-- Gere o PDF com: npm run resume -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Geist+Mono:wght@500&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      :root {
+        --fg: #0f172b;
+        --muted: #45556c;
+        --faint: #90a1b9;
+        --border: #e2e8f0;
+        --brand: #155dfc;
+        --chip: #f1f5f9;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Geist", system-ui, sans-serif;
+        font-size: 9.6pt;
+        line-height: 1.45;
+        color: var(--fg);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        width: 210mm;
+        padding: 14mm 15mm 12mm;
+        display: flex;
+        flex-direction: column;
+        gap: 5.5mm;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      /* Cabeçalho */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 8mm;
+        padding-bottom: 5mm;
+        border-bottom: 2px solid var(--fg);
+      }
+      .logo {
+        font-family: "Geist Mono", monospace;
+        font-size: 9pt;
+        color: var(--muted);
+        margin-bottom: 2mm;
+      }
+      .logo span {
+        color: var(--brand);
+      }
+      h1 {
+        font-size: 28pt;
+        line-height: 1;
+        letter-spacing: -0.5pt;
+      }
+      .role {
+        margin-top: 2mm;
+        font-size: 11.5pt;
+        color: var(--muted);
+      }
+      .role strong {
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .contacts {
+        list-style: none;
+        text-align: right;
+        font-size: 9pt;
+        color: var(--muted);
+        line-height: 1.7;
+        white-space: nowrap;
+      }
+      .contacts b {
+        font-family: "Geist Mono", monospace;
+        font-weight: 500;
+        font-size: 7.5pt;
+        color: var(--faint);
+        margin-right: 1.5mm;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+      }
+
+      /* Seções */
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        font-size: 10pt;
+        text-transform: uppercase;
+        letter-spacing: 1.2pt;
+        color: var(--brand);
+        margin-bottom: 2.5mm;
+      }
+      h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .summary {
+        color: var(--muted);
+        font-size: 10pt;
+      }
+      .summary strong {
+        color: var(--fg);
+        font-weight: 600;
+      }
+
+      .item + .item {
+        margin-top: 3.5mm;
+      }
+      .item-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4mm;
+      }
+      h3 {
+        font-size: 11pt;
+      }
+      h3 .at {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .date {
+        font-family: "Geist Mono", monospace;
+        font-size: 8pt;
+        color: var(--faint);
+        white-space: nowrap;
+      }
+      ul.bullets {
+        margin-top: 1.2mm;
+        padding-left: 4mm;
+        color: var(--muted);
+      }
+      ul.bullets li + li {
+        margin-top: 0.6mm;
+      }
+      ul.bullets li::marker {
+        color: var(--brand);
+      }
+
+      .two-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3mm 6mm;
+      }
+      .project h3 {
+        font-size: 10pt;
+        display: flex;
+        align-items: center;
+        gap: 2mm;
+      }
+      .badge {
+        font-family: "Geist", sans-serif;
+        font-size: 6.8pt;
+        font-weight: 500;
+        color: var(--brand);
+        border: 1px solid #bedbff;
+        background: #eff6ff;
+        border-radius: 99px;
+        padding: 0.2mm 1.8mm;
+      }
+      .project p {
+        color: var(--muted);
+        font-size: 8.8pt;
+        margin-top: 0.5mm;
+      }
+      .tags {
+        font-family: "Geist Mono", monospace;
+        font-size: 7.3pt;
+        color: var(--faint);
+        margin-top: 0.8mm;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: 26mm 1fr;
+        gap: 1.6mm 4mm;
+        align-items: baseline;
+      }
+      .skills dt {
+        font-weight: 600;
+        font-size: 9pt;
+      }
+      .skills dd {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2mm;
+      }
+      .chip {
+        font-family: "Geist Mono", monospace;
+        font-size: 7.6pt;
+        background: var(--chip);
+        border-radius: 1mm;
+        padding: 0.3mm 1.6mm;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div>
+          <p class="logo"><span>&lt;</span>claudinei<span> /&gt;</span></p>
+          <h1>Claudinei de Lima</h1>
+          <p class="role">
+            Desenvolvedor <strong>Full Stack</strong> · Java · Flutter ·
+            Next.js
+          </p>
+        </div>
+        <ul class="contacts">
+          <li>
+            <b>E-mail</b
+            ><a href="mailto:claudinei.rdlima@gmail.com"
+              >claudinei.rdlima@gmail.com</a
+            >
+          </li>
+          <li>
+            <b>Site</b
+            ><a href="https://claudinei-dev.vercel.app"
+              >claudinei-dev.vercel.app</a
+            >
+          </li>
+          <li>
+            <b>LinkedIn</b
+            ><a href="https://www.linkedin.com/in/claudinei-de-lima-690b4021a/"
+              >in/claudinei-de-lima-690b4021a</a
+            >
+          </li>
+          <li>
+            <b>GitHub</b
+            ><a href="https://github.com/cfrdlima">github.com/cfrdlima</a>
+          </li>
+        </ul>
+      </header>
+
+      <section>
+        <h2>Resumo</h2>
+        <p class="summary">
+          Desenvolvedor de software com foco em aplicações
+          <strong>web e mobile</strong>, atuando profissionalmente desde 2022.
+          Participo de todo o ciclo de desenvolvimento, com experiência sólida
+          em <strong>Java (Jakarta EE)</strong>, JSF, PostgreSQL, MongoDB e
+          RabbitMQ no back-end, e <strong>Flutter</strong>,
+          <strong>React</strong> e <strong>Next.js</strong> no front-end e
+          mobile. Busco soluções robustas, escaláveis e orientadas à
+          experiência do usuário.
+        </p>
+      </section>
+
+      <section>
+        <h2>Experiência</h2>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Software Engineer <span class="at">· Mertins Tecnologias</span></h3>
+            <span class="date">abr 2022 — atual</span>
+          </div>
+          <ul class="bullets">
+            <li>
+              Desenvolvimento e manutenção de sistemas com arquitetura MVC em
+              Jakarta EE, com front-end em JSF (JavaServer Faces).
+            </li>
+            <li>
+              Persistência em PostgreSQL e MongoDB; filas e comunicação entre
+              serviços com RabbitMQ; integração de APIs REST.
+            </li>
+            <li>Desenvolvimento de aplicativos móveis com Flutter.</li>
+            <li>
+              Mentoria de estagiários e promoção de um ambiente colaborativo e
+              de aprendizado constante.
+            </li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Frontend Engineer <span class="at">· Noticiato</span></h3>
+            <span class="date">set 2024 — abr 2025</span>
+          </div>
+          <ul class="bullets">
+            <li>
+              Desenvolvimento e manutenção de interfaces modernas e responsivas
+              com HTML, CSS, JavaScript, React e Next.js.
+            </li>
+            <li>
+              Foco em experiência do usuário e performance, em colaboração
+              próxima com designers e com os times de back-end.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projetos</h2>
+        <div class="two-cols">
+          <div class="project">
+            <h3>Libras Go</h3>
+            <p>
+              Jogo mobile no estilo endless runner 3D que ensina LIBRAS durante
+              a jogabilidade, com fases por tema de vocabulário.
+            </p>
+            <p class="tags">Unity · C# · Supabase</p>
+          </div>
+          <div class="project">
+            <h3>JoinMe <span class="badge">em desenvolvimento</span></h3>
+            <p>
+              App para esportes amadores: conecta jogadores, organiza partidas
+              e gerencia quadras. Android e iOS.
+            </p>
+            <p class="tags">Flutter · Dart · Java</p>
+          </div>
+          <div class="project">
+            <h3>Formatta.aq <span class="badge">em desenvolvimento</span></h3>
+            <p>
+              Plataforma que formata documentos automaticamente segundo normas
+              acadêmicas como ABNT e APA.
+            </p>
+            <p class="tags">Next.js · React · Tailwind · Firebase</p>
+          </div>
+          <div class="project">
+            <h3>Steam Watcher</h3>
+            <p>
+              App que acompanha jogos da Steam e notifica atualizações em tempo
+              real, com back-end próprio.
+            </p>
+            <p class="tags">Flutter · Spring Boot · Steam API</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Competências</h2>
+        <dl class="skills">
+          <dt>Back-end</dt>
+          <dd>
+            <span class="chip">Java</span><span class="chip">Jakarta EE</span
+            ><span class="chip">Spring Boot</span><span class="chip">JSF</span
+            ><span class="chip">APIs REST</span
+            ><span class="chip">RabbitMQ</span>
+          </dd>
+          <dt>Front-end</dt>
+          <dd>
+            <span class="chip">React</span><span class="chip">Next.js</span
+            ><span class="chip">TypeScript</span
+            ><span class="chip">JavaScript</span
+            ><span class="chip">Tailwind CSS</span
+            ><span class="chip">HTML/CSS</span>
+          </dd>
+          <dt>Mobile</dt>
+          <dd>
+            <span class="chip">Flutter</span><span class="chip">Dart</span
+            ><span class="chip">Firebase</span>
+          </dd>
+          <dt>Dados</dt>
+          <dd>
+            <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span
+            ><span class="chip">Firebase</span
+            ><span class="chip">Supabase</span>
+          </dd>
+          <dt>Ferramentas</dt>
+          <dd>
+            <span class="chip">Git</span><span class="chip">Docker</span
+            ><span class="chip">JUnit</span><span class="chip">Unity</span>
+          </dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Formação</h2>
+        <div class="item">
+          <div class="item-head">
+            <h3>
+              Bacharelado em Ciência da Computação
+              <span class="at">· Universidade Federal de Pelotas (UFPEL)</span>
+            </h3>
+            <span class="date">2019 — 2026</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
