@@ -34,7 +34,9 @@ export default function NavLinks({
     <ul className="flex items-center gap-1">
       {links.map((link) => {
         const isActive =
-          link.href === "/" ? active === null : link.href === `#${active}`;
+          link.href.includes("#")
+            ? link.href.endsWith(`#${active}`)
+            : active === null;
         return (
           <li key={link.href}>
             <Link

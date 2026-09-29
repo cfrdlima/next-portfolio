@@ -1,8 +1,13 @@
 import { ImageResponse } from "next/og";
+import type { Locale } from "@/i18n/dictionaries";
 
-export const alt = "Claudinei de Lima | Desenvolvedor de Software";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+// usado por app/opengraph-image.tsx (PT) e app/en/opengraph-image.tsx (EN)
+export const ogSize = { width: 1200, height: 630 };
+
+export const ogAlt: Record<Locale, string> = {
+  pt: "Claudinei de Lima | Desenvolvedor de Software",
+  en: "Claudinei de Lima | Software Developer",
+};
 
 // mesmas cores do tema escuro do site (globals.css)
 const colors = {
@@ -31,7 +36,7 @@ async function loadFont(weight: 500 | 700) {
   }
 }
 
-export default async function OpengraphImage() {
+export async function renderOgImage(locale: Locale) {
   const fonts = (await Promise.all([loadFont(500), loadFont(700)])).filter(
     (font) => font !== null
   );
@@ -65,12 +70,25 @@ export default async function OpengraphImage() {
             Claudinei de Lima
           </div>
           <div style={{ display: "flex", fontSize: 40, marginTop: 12 }}>
-            <span style={{ color: colors.muted, marginRight: 12 }}>
-              Desenvolvedor de
-            </span>
-            <span style={{ color: colors.brand, fontWeight: 700 }}>
-              Software
-            </span>
+            {locale === "pt" ? (
+              <>
+                <span style={{ color: colors.muted, marginRight: 12 }}>
+                  Desenvolvedor de
+                </span>
+                <span style={{ color: colors.brand, fontWeight: 700 }}>
+                  Software
+                </span>
+              </>
+            ) : (
+              <>
+                <span
+                  style={{ color: colors.brand, fontWeight: 700, marginRight: 12 }}
+                >
+                  Software
+                </span>
+                <span style={{ color: colors.muted }}>Developer</span>
+              </>
+            )}
           </div>
         </div>
 
@@ -100,11 +118,11 @@ export default async function OpengraphImage() {
             ))}
           </div>
           <div style={{ fontSize: 24, color: colors.muted }}>
-            claudinei-dev.vercel.app
+            {locale === "pt" ? "claudinei-dev.vercel.app" : "claudinei-dev.vercel.app/en"}
           </div>
         </div>
       </div>
     ),
-    { ...size, fonts }
+    { ...ogSize, fonts }
   );
 }

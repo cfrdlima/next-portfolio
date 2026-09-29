@@ -6,10 +6,12 @@ import { m } from "motion/react";
 import { Check, Copy, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "../layout/social-links";
+import { useI18n } from "@/i18n/locale-provider";
 
 const email = "claudinei.rdlima@gmail.com";
 
 export default function Contact() {
+  const { t } = useI18n();
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -40,14 +42,13 @@ export default function Contact() {
         />
 
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
-          04 · Contato
+          {t.contact.eyebrow}
         </span>
         <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-balance md:text-5xl">
-          Vamos conversar?
+          {t.contact.title}
         </h2>
         <p className="max-w-xl text-lg text-muted-foreground md:text-xl">
-          Tem um projeto, uma vaga ou só quer trocar uma ideia? Me mande um
-          e-mail ou me encontre nas redes.
+          {t.contact.subtitle}
         </p>
 
         <div className="flex w-full max-w-sm flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
@@ -65,31 +66,31 @@ export default function Contact() {
             variant="outline"
             onClick={copyEmail}
             className="cursor-pointer"
-            aria-label="Copiar e-mail"
+            aria-label={t.contact.copyLabel}
           >
             {copied ? <Check /> : <Copy />}
-            {copied ? "Copiado!" : "Copiar"}
+            {copied ? t.contact.copied : t.contact.copy}
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a href="/curriculo.pdf" download="Curriculo-Claudinei-de-Lima.pdf">
-              <Download /> Baixar currículo
+            <a href={t.common.resumeFile} download={t.common.resumeDownloadName}>
+              <Download /> {t.contact.downloadResume}
             </a>
           </Button>
           {/* anuncia a cópia para leitores de tela */}
           <span className="sr-only" aria-live="polite">
-            {copied ? "E-mail copiado" : ""}
+            {copied ? t.contact.copiedAnnouncement : ""}
           </span>
         </div>
 
         <p className="-mt-4 text-sm text-muted-foreground">
-          Currículo também disponível em{" "}
+          {t.contact.otherResumePrefix}{" "}
           <a
-            href="/resume-en.pdf"
-            download="Resume-Claudinei-de-Lima.pdf"
-            hrefLang="en"
+            href={t.contact.otherResumeFile}
+            download={t.contact.otherResumeDownloadName}
+            hrefLang={t.contact.otherResumeLang}
             className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-brand"
           >
-            inglês
+            {t.contact.otherResumeLink}
           </a>
           .
         </p>
@@ -101,7 +102,7 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${name} de Claudinei`}
+                aria-label={t.common.socialLabel(name)}
                 className="flex size-12 items-center justify-center rounded-xl border text-muted-foreground transition-all hover:-translate-y-1 hover:border-brand hover:text-brand"
               >
                 <Icon size={22} />

@@ -4,8 +4,10 @@ import { m } from "motion/react";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/i18n/locale-provider";
 
 export default function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative flex min-h-svh flex-col items-center justify-center gap-8 overflow-hidden pt-20 text-center">
       {/* Fundo: grade com máscara radial + brilho da cor de destaque */}
@@ -25,7 +27,7 @@ export default function Hero() {
         className="inline-flex items-center gap-2 rounded-full border bg-background/60 px-4 py-1.5 text-sm font-medium text-muted-foreground backdrop-blur"
       >
         <span className="size-2 rounded-full bg-emerald-500" aria-hidden />
-        Desenvolvedor de Software · Web &amp; Mobile
+        {t.hero.badge}
       </m.span>
 
       {/* Título com efeito de digitação */}
@@ -33,13 +35,13 @@ export default function Hero() {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        aria-label="Olá, meu nome é Claudinei."
+        aria-label={t.hero.greeting}
         className="max-w-5xl text-5xl font-bold tracking-tight text-balance sm:text-6xl lg:text-8xl"
       >
         {/* texto animado é lido letra a letra; leitor de tela usa o aria-label */}
         <TypeAnimation
           aria-hidden
-          sequence={["Olá, meu nome é Claudinei.", 1000]}
+          sequence={[t.hero.greeting, 1000]}
           speed={50}
           wrapper="span"
           repeat={0}
@@ -55,9 +57,9 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-2xl text-lg text-muted-foreground md:text-2xl"
       >
-        E eu sou{" "}
-        <span className="font-semibold text-brand">desenvolvedor</span>. Crio
-        aplicações web e mobile com Java, Flutter e Next.js.
+        {t.hero.lead}{" "}
+        <span className="font-semibold text-brand">{t.hero.role}</span>
+        {t.hero.rest}
       </m.p>
 
       <m.div
@@ -72,22 +74,22 @@ export default function Hero() {
           className="bg-brand text-brand-foreground hover:bg-brand/90"
         >
           <Link href="#projects">
-            Ver projetos <ArrowRight />
+            {t.hero.ctaProjects} <ArrowRight />
           </Link>
         </Button>
         <Button asChild size="lg" variant="outline">
-          <Link href="#contact">Entrar em contato</Link>
+          <Link href="#contact">{t.hero.ctaContact}</Link>
         </Button>
         <Button asChild size="lg" variant="ghost">
-          <a href="/curriculo.pdf" download="Curriculo-Claudinei-de-Lima.pdf">
-            <Download /> Currículo
+          <a href={t.common.resumeFile} download={t.common.resumeDownloadName}>
+            <Download /> {t.hero.ctaResume}
           </a>
         </Button>
       </m.div>
 
       <m.a
         href="#about"
-        aria-label="Rolar para a seção Sobre"
+        aria-label={t.hero.scrollLabel}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}

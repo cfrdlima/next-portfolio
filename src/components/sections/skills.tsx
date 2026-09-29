@@ -10,30 +10,28 @@ import {
 } from "@/components/ui/card";
 import { Gamepad2, Globe, Smartphone } from "lucide-react";
 import SkillsTicker from "../layout/skills-ticker";
+import { useI18n } from "@/i18n/locale-provider";
 
 const skillsData = [
   {
-    title: "Desenvolvimento Web",
+    id: "web",
     icon: Globe,
-    description: "Sites e aplicações web modernas, rápidas e responsivas.",
     tools: ["Next.js", "React", "TypeScript", "Tailwind", "Firebase"],
   },
   {
-    title: "Desenvolvimento Mobile",
+    id: "mobile",
     icon: Smartphone,
-    description:
-      "Apps multiplataforma para Android e iOS, com back-end em Java quando preciso.",
     tools: ["Flutter", "Dart", "Firebase", "Java", "Spring Boot"],
   },
   {
-    title: "Desenvolvimento de Games",
+    id: "games",
     icon: Gamepad2,
-    description: "Jogos em Unity, incluindo um jogo mobile para ensinar LIBRAS.",
     tools: ["Unity", "C#", "Supabase"],
   },
-];
+] as const;
 
 export default function Skills() {
+  const { t } = useI18n();
   return (
     <m.section
       id="skills"
@@ -45,21 +43,22 @@ export default function Skills() {
     >
       <div className="flex max-w-3xl flex-col items-center gap-4 text-center">
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
-          02 · Skills
+          {t.skills.eyebrow}
         </span>
         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-          Minha caixinha de ferramentas
+          {t.skills.title}
         </h2>
         <p className="text-lg text-muted-foreground md:text-xl">
-          As habilidades e ferramentas que domino e que me permitem criar
-          soluções criativas e funcionais para meus clientes.
+          {t.skills.subtitle}
         </p>
       </div>
 
       <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-        {skillsData.map(({ title, icon: Icon, description, tools }, i) => (
+        {skillsData.map(({ id, icon: Icon, tools }, i) => {
+          const { title, description } = t.skills.areas[id];
+          return (
           <m.div
-            key={title}
+            key={id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -76,7 +75,7 @@ export default function Skills() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="mt-auto">
-                <ul className="flex flex-wrap gap-1.5" aria-label="Ferramentas">
+                <ul className="flex flex-wrap gap-1.5" aria-label={t.skills.toolsLabel}>
                   {tools.map((tool) => (
                     <li
                       key={tool}
@@ -89,7 +88,8 @@ export default function Skills() {
               </CardContent>
             </Card>
           </m.div>
-        ))}
+          );
+        })}
       </div>
 
       <SkillsTicker />

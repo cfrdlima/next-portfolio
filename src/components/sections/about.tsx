@@ -1,9 +1,11 @@
 "use client";
 import { m } from "motion/react";
+import { useI18n } from "@/i18n/locale-provider";
 
 const focusAreas = ["Front-end", "Mobile", "Java", "Flutter", "Next.js", "Firebase"];
 
 export default function About() {
+  const { t } = useI18n();
   return (
     <section
       id="about"
@@ -19,10 +21,10 @@ export default function About() {
           className="flex flex-col gap-6"
         >
           <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
-            01 · Sobre mim
+            {t.about.eyebrow}
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-balance md:text-5xl">
-            Além dos commits e branches: a jornada por trás do código.
+            {t.about.title}
           </h2>
           <ul className="flex flex-wrap gap-2">
             {focusAreas.map((area) => (
@@ -45,16 +47,13 @@ export default function About() {
           className="flex flex-col justify-center gap-8 text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
           <p>
-            Sou o Claudinei, desenvolvedor de software com foco em aplicações
-            web e mobile. Iniciei minha trajetória em tecnologia em 2019,
-            cursando Ciência da Computação na{" "}
-            <strong className="font-semibold text-foreground">UFPEL</strong>,
-            e desde então venho me especializando em criar soluções robustas e
-            escaláveis. Atualmente atuo na{" "}
+            {t.about.p1}{" "}
+            <strong className="font-semibold text-foreground">UFPEL</strong>
+            {t.about.p2}{" "}
             <strong className="font-semibold text-foreground">
               Mertins Tecnologias
             </strong>
-            , trabalhando com Java, Flutter e Next.js.
+            {t.about.p3}
           </p>
         </m.div>
       </div>

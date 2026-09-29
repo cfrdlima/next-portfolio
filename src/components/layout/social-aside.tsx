@@ -2,8 +2,10 @@
 import Link from "next/link";
 import { m } from "motion/react";
 import { socialLinks } from "./social-links";
+import { useI18n } from "@/i18n/locale-provider";
 
 export default function SocialMediaAside() {
+  const { t } = useI18n();
   return (
     <m.aside
       className="fixed bottom-0 left-6 z-40 hidden flex-col items-center gap-2 xl:flex"
@@ -22,7 +24,7 @@ export default function SocialMediaAside() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${name} de Claudinei`}
+            aria-label={t.common.socialLabel(name)}
             className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-all duration-200 hover:-translate-y-1 hover:text-brand"
           >
             <Icon size={20} />

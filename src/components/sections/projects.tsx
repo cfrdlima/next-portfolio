@@ -11,90 +11,87 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { useI18n } from "@/i18n/locale-provider";
 
-type Project = {
+// textos (descrição, status, notas) ficam em src/i18n/dictionaries.ts
+type ProjectData = {
+  id: string;
   name: string;
   category: "Web" | "Mobile" | "Game";
-  description: string;
   tags: string[];
   site?: string;
-  siteLabel?: string;
   code?: string;
   // print em public/projects (1280x800); sem imagem, o card usa uma capa gerada
   image?: string;
+  inDevelopment?: boolean;
+};
+
+type Project = ProjectData & {
+  description: string;
+  siteLabel?: string;
   status?: string;
   note?: string;
 };
 
-const projects: Project[] = [
+const projectData: ProjectData[] = [
   {
+    id: "libras-go",
     name: "Libras Go",
     category: "Game",
-    description:
-      "Jogo mobile no estilo endless runner 3D que ensina LIBRAS durante a jogabilidade, com fases organizadas por tema de vocabulário.",
     tags: ["Unity", "C#", "Supabase"],
     site: "https://librasgoweb.vercel.app",
-    siteLabel: "Painel do professor",
     image: "/projects/libras-go.webp",
   },
   {
+    id: "joinme",
     name: "JoinMe",
     category: "Mobile",
-    description:
-      "App para esportes amadores: conecta jogadores, organiza partidas e gerencia quadras. Android e iOS.",
     tags: ["Flutter", "Dart", "Java"],
-    status: "em desenvolvimento",
+    inDevelopment: true,
   },
   {
+    id: "formatta-aq",
     name: "Formatta.aq",
     category: "Web",
-    description:
-      "Plataforma que formata documentos automaticamente segundo normas acadêmicas como ABNT e APA, pensada para quem não domina as regras.",
     tags: ["Next.js", "React", "Tailwind", "Firebase"],
     site: "https://formatta-aq.vercel.app",
     image: "/projects/formatta-aq.webp",
-    status: "em desenvolvimento",
+    inDevelopment: true,
   },
   {
+    id: "steam-watcher",
     name: "Steam Watcher",
     category: "Mobile",
-    description:
-      "App que acompanha seus jogos da Steam e avisa sobre atualizações com notificações em tempo real.",
     tags: ["Flutter", "Spring Boot", "Steam API"],
   },
   {
+    id: "roka-moka",
     name: "Roká Moká",
     category: "Mobile",
-    description:
-      "Gamificação para museus de Pelotas: o visitante escaneia QR codes das obras, junta estrelas e desbloqueia emblemas.",
     tags: ["Flutter", "Firebase", "Clean Architecture"],
     code: "https://github.com/RokaMokaHub/rokaMokaApp",
-    note: "Projeto da faculdade",
   },
   {
+    id: "ja-vi-esse-filme",
     name: "Já vi esse filme?",
     category: "Web",
-    description:
-      "Agenda de filmes com favoritos, listas personalizadas e detalhes como sinopse, elenco e trailers, usando a API do TMDB.",
     tags: ["Next.js", "React", "SCSS", "TMDB API"],
     site: "https://ja-vi-este-filme.vercel.app",
     code: "https://github.com/cfrdlima/Ja-vi-esse-filme",
   },
   {
+    id: "portfolio",
     name: "Portfólio",
     category: "Web",
-    description:
-      "Este site: portfólio pessoal com tema claro/escuro, animações e SEO.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Motion"],
     site: "https://claudinei-dev.vercel.app",
     image: "/projects/portfolio.webp",
     code: "https://github.com/cfrdlima/next-portfolio",
   },
   {
+    id: "flappy-bird",
     name: "Flappy Bird",
     category: "Game",
-    description:
-      "Recriação do Flappy Bird feita para praticar Unity e desenvolvimento de games.",
     tags: ["Unity", "C#"],
     code: "https://github.com/cfrdlima/Flappy-Bird",
   },
@@ -106,14 +103,14 @@ const categoryIcons: Record<Project["category"], LucideIcon> = {
   Game: Gamepad2,
 };
 
-function ProjectCover({ project }: { project: Project }) {
+function ProjectCover({ project, alt }: { project: Project; alt: string }) {
   const Icon = categoryIcons[project.category];
   return (
     <div className="relative -mx-2 -mt-2 aspect-[16/10] overflow-hidden rounded-xl border bg-secondary">
       {project.image ? (
         <Image
           src={project.image}
-          alt={`Tela do projeto ${project.name}`}
+          alt={alt}
           fill
           sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
           className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -160,6 +157,17 @@ function ProjectLink({
 }
 
 export default function Projects() {
+  const { t } = useI18n();
+  const projects: Project[] = projectData.map((project) => {
+    const text = t.projects.items[project.id];
+    return {
+      ...project,
+      ...text,
+      name: text.name ?? project.name,
+      status: project.inDevelopment ? t.projects.inDevelopment : undefined,
+    };
+  });
+
   return (
     <section
       id="projects"
@@ -173,28 +181,30 @@ export default function Projects() {
         className="flex max-w-3xl flex-col items-center gap-4 text-center"
       >
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
-          03 · Projetos
+          {t.projects.eyebrow}
         </span>
         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-          O que eu venho construindo
+          {t.projects.title}
         </h2>
         <p className="text-lg text-muted-foreground md:text-xl">
-          Uma seleção de projetos web, mobile e de games, dos profissionais aos
-          acadêmicos.
+          {t.projects.subtitle}
         </p>
       </m.div>
 
       <ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, i) => (
           <m.li
-            key={project.name}
+            key={project.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
             className="group flex flex-col gap-4 rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
           >
-            <ProjectCover project={project} />
+            <ProjectCover
+              project={project}
+              alt={t.projects.coverAlt(project.name)}
+            />
 
             <div className="flex min-h-6 flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -215,7 +225,7 @@ export default function Projects() {
             <h3 className="text-xl font-bold">{project.name}</h3>
             <p className="text-muted-foreground">{project.description}</p>
 
-            <ul className="flex flex-wrap gap-1.5" aria-label="Tecnologias">
+            <ul className="flex flex-wrap gap-1.5" aria-label={t.projects.tagsLabel}>
               {project.tags.map((tag) => (
                 <li
                   key={tag}
@@ -231,7 +241,7 @@ export default function Projects() {
                 {project.site && (
                   <ProjectLink
                     href={project.site}
-                    label={project.siteLabel ?? "Ver site"}
+                    label={project.siteLabel ?? t.projects.viewSite}
                     project={project.name}
                     icon={<ArrowUpRight className="size-4" />}
                   />
@@ -239,7 +249,7 @@ export default function Projects() {
                 {project.code && (
                   <ProjectLink
                     href={project.code}
-                    label="Código"
+                    label={t.projects.code}
                     project={project.name}
                     icon={<FaGithub className="size-4" />}
                   />
