@@ -32,6 +32,7 @@ Abra http://localhost:3000.
 | `npm run build` | Build de produção                      |
 | `npm start`     | Sobe o build de produção               |
 | `npm run lint`  | Verifica o código com ESLint           |
+| `npm run resume` | Gera os PDFs do currículo (PT e EN) a partir de `resume/*.html` com o Chrome headless |
 
 ### Com Docker
 

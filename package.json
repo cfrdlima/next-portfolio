@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "resume": "google-chrome --headless=new --no-sandbox --no-pdf-header-footer --virtual-time-budget=10000 --print-to-pdf=public/curriculo.pdf \"file://$PWD/resume/curriculo.html\""
+    "resume": "for f in curriculo resume-en; do google-chrome --headless=new --no-sandbox --no-pdf-header-footer --virtual-time-budget=10000 --print-to-pdf=public/$f.pdf \"file://$PWD/resume/$f.html\"; done"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",

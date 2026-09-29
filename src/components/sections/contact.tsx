@@ -81,6 +81,19 @@ export default function Contact() {
           </span>
         </div>
 
+        <p className="-mt-4 text-sm text-muted-foreground">
+          Currículo também disponível em{" "}
+          <a
+            href="/resume-en.pdf"
+            download="Resume-Claudinei-de-Lima.pdf"
+            hrefLang="en"
+            className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-brand"
+          >
+            inglês
+          </a>
+          .
+        </p>
+
         <ul className="flex gap-2">
           {socialLinks.map(({ name, href, icon: Icon }) => (
             <li key={name}>
