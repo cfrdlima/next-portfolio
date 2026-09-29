@@ -73,6 +73,7 @@ const projects: Project[] = [
     description:
       "Este site: portfólio pessoal com tema claro/escuro, animações e SEO.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    site: "https://claudinei-dev.vercel.app",
     code: "https://github.com/cfrdlima/next-portfolio",
   },
   {

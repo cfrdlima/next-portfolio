@@ -2,7 +2,7 @@
 
 Portfólio pessoal de Claudinei de Lima, desenvolvedor de software com foco em aplicações web e mobile.
 
-**Site:** https://next-portfolio-woad-sigma.vercel.app
+**Site:** https://claudinei-dev.vercel.app
 
 ## Tecnologias
 
