@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "./toggle-theme";
+import NavLinks from "./nav-links";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -34,18 +35,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           {/* Menu desktop */}
           <nav className="hidden md:block">
-            <ul className="flex items-center gap-1">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <NavLinks links={navLinks} />
           </nav>
 
           <ThemeToggle />
