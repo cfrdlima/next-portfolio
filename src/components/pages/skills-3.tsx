@@ -19,7 +19,11 @@ const skillsData = [
     description: "Sites e aplicações web modernas, rápidas e responsivas.",
     projects: [
       { name: "Portfólio", href: "https://github.com/cfrdlima/next-portfolio" },
-      { name: "Formatta.aq", href: "https://formatta-aq.vercel.app" },
+      {
+        name: "Formatta.aq",
+        href: "https://formatta-aq.vercel.app",
+        status: "em desenvolvimento",
+      },
       {
         name: "Já vi esse filme?",
         href: "https://github.com/cfrdlima/Ja-vi-esse-filme",
