@@ -19,7 +19,7 @@ const skillsData = [
     description: "Sites e aplicações web modernas, rápidas e responsivas.",
     projects: [
       { name: "Portfólio", href: "https://github.com/cfrdlima/next-portfolio" },
-      { name: "Formatta.aq", href: "https://github.com/cfrdlima/formatta-aq" },
+      { name: "Formatta.aq", href: "https://formatta-aq.vercel.app" },
       {
         name: "Já vi esse filme?",
         href: "https://github.com/cfrdlima/Ja-vi-esse-filme",
@@ -29,17 +29,27 @@ const skillsData = [
   {
     title: "Desenvolvimento Mobile",
     icon: Smartphone,
-    description: "Apps multiplataforma com Flutter e Firebase.",
+    description:
+      "Apps multiplataforma para Android e iOS com Flutter e Firebase.",
     projects: [
+      {
+        name: "JoinMe",
+        href: "https://github.com/JoinMeApp",
+        status: "em desenvolvimento",
+      },
       { name: "Steam Watcher", href: "https://github.com/Steam-Watcher" },
-      { name: "Roká Moká (Faculdade)" },
+      {
+        name: "Roká Moká (Faculdade)",
+        href: "https://github.com/RokaMokaHub/rokaMokaApp",
+      },
     ],
   },
   {
     title: "Desenvolvimento de Games",
     icon: Gamepad2,
-    description: "Jogos e experimentos interativos.",
+    description: "Jogos em Unity, incluindo um jogo mobile para ensinar LIBRAS.",
     projects: [
+      { name: "Libras Go", href: "https://librasgoweb.vercel.app" },
       { name: "Flappy Bird", href: "https://github.com/cfrdlima/Flappy-Bird" },
     ],
   },
@@ -104,7 +114,14 @@ export default function Skills() {
                           href={project.href}
                           className="group/link flex items-center justify-between py-2.5 font-medium transition-colors hover:text-brand"
                         >
-                          {project.name}
+                          <span className="flex items-center gap-2">
+                            {project.name}
+                            {"status" in project && project.status && (
+                              <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand">
+                                {project.status}
+                              </span>
+                            )}
+                          </span>
                           <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-brand" />
                         </Link>
                       ) : (
