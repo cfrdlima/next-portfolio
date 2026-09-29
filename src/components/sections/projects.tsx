@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { m } from "motion/react";
 import {
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { useI18n } from "@/i18n/locale-provider";
+import ProjectGallery from "./project-gallery";
 
 // textos (descrição, status, notas) ficam em src/i18n/dictionaries.ts
 type ProjectData = {
@@ -21,8 +21,10 @@ type ProjectData = {
   tags: string[];
   site?: string;
   code?: string;
-  // print em public/projects (1280x800); sem imagem, o card usa uma capa gerada
-  image?: string;
+  // prints em public/projects; sem imagens, o card usa uma capa gerada
+  images?: string[];
+  // "phone": telas de celular em pé; padrão "desktop"
+  screens?: "phone" | "desktop";
   inDevelopment?: boolean;
 };
 
@@ -33,6 +35,10 @@ type Project = ProjectData & {
   note?: string;
 };
 
+// public/projects/<id>-1.webp, <id>-2.webp, ...
+const shots = (id: string, count: number) =>
+  Array.from({ length: count }, (_, i) => `/projects/${id}-${i + 1}.webp`);
+
 const projectData: ProjectData[] = [
   {
     id: "libras-go",
@@ -40,7 +46,8 @@ const projectData: ProjectData[] = [
     category: "Game",
     tags: ["Unity", "C#", "Supabase"],
     site: "https://librasgoweb.vercel.app",
-    image: "/projects/libras-go.webp",
+    images: shots("libras-go", 2),
+    screens: "phone",
   },
   {
     id: "joinme",
@@ -55,7 +62,7 @@ const projectData: ProjectData[] = [
     category: "Web",
     tags: ["Next.js", "React", "Tailwind", "Firebase"],
     site: "https://formatta-aq.vercel.app",
-    image: "/projects/formatta-aq.webp",
+    images: ["/projects/formatta-aq.webp"],
     inDevelopment: true,
   },
   {
@@ -63,6 +70,8 @@ const projectData: ProjectData[] = [
     name: "Steam Watcher",
     category: "Mobile",
     tags: ["Flutter", "Spring Boot", "Steam API"],
+    images: shots("steam-watcher", 2),
+    screens: "phone",
   },
   {
     id: "roka-moka",
@@ -70,6 +79,8 @@ const projectData: ProjectData[] = [
     category: "Mobile",
     tags: ["Flutter", "Firebase", "Clean Architecture"],
     code: "https://github.com/RokaMokaHub/rokaMokaApp",
+    images: shots("roka-moka", 2),
+    screens: "phone",
   },
   {
     id: "ja-vi-esse-filme",
@@ -78,6 +89,7 @@ const projectData: ProjectData[] = [
     tags: ["Next.js", "React", "SCSS", "TMDB API"],
     site: "https://ja-vi-este-filme.vercel.app",
     code: "https://github.com/cfrdlima/Ja-vi-esse-filme",
+    images: shots("ja-vi-esse-filme", 3),
   },
   {
     id: "portfolio",
@@ -85,7 +97,7 @@ const projectData: ProjectData[] = [
     category: "Web",
     tags: ["Next.js", "TypeScript", "Tailwind", "Motion"],
     site: "https://claudinei-dev.vercel.app",
-    image: "/projects/portfolio.webp",
+    images: ["/projects/portfolio.webp"],
     code: "https://github.com/cfrdlima/next-portfolio",
   },
   {
@@ -94,6 +106,8 @@ const projectData: ProjectData[] = [
     category: "Game",
     tags: ["Unity", "C#"],
     code: "https://github.com/cfrdlima/Flappy-Bird",
+    images: shots("flappy-bird", 2),
+    screens: "phone",
   },
 ];
 
@@ -103,30 +117,27 @@ const categoryIcons: Record<Project["category"], LucideIcon> = {
   Game: Gamepad2,
 };
 
-function ProjectCover({ project, alt }: { project: Project; alt: string }) {
+function ProjectCover({ project }: { project: Project }) {
+  if (project.images?.length) {
+    return (
+      <ProjectGallery
+        name={project.name}
+        images={project.images}
+        variant={project.screens ?? "desktop"}
+      />
+    );
+  }
   const Icon = categoryIcons[project.category];
   return (
-    <div className="relative -mx-2 -mt-2 aspect-[16/10] overflow-hidden rounded-xl border bg-secondary">
-      {project.image ? (
-        <Image
-          src={project.image}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        />
-      ) : (
-        // capa gerada: gradiente + ícone da categoria
-        <div
-          aria-hidden
-          className="flex size-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-brand/25 via-secondary to-card"
-        >
-          <Icon className="size-10 text-brand transition-transform duration-500 group-hover:scale-110" />
-          <span className="font-mono text-sm font-semibold text-muted-foreground">
-            {project.name}
-          </span>
-        </div>
-      )}
+    // capa gerada: gradiente + ícone da categoria
+    <div
+      aria-hidden
+      className="-mx-2 -mt-2 flex aspect-[16/10] flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border bg-gradient-to-br from-brand/25 via-secondary to-card"
+    >
+      <Icon className="size-10 text-brand transition-transform duration-500 group-hover:scale-110" />
+      <span className="font-mono text-sm font-semibold text-muted-foreground">
+        {project.name}
+      </span>
     </div>
   );
 }
@@ -201,10 +212,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
             className="group flex flex-col gap-4 rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
           >
-            <ProjectCover
-              project={project}
-              alt={t.projects.coverAlt(project.name)}
-            />
+            <ProjectCover project={project} />
 
             <div className="flex min-h-6 flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">

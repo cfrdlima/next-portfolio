@@ -80,8 +80,18 @@ const pt = {
     tagsLabel: "Tecnologias",
     viewSite: "Ver site",
     code: "Código",
-    coverAlt: (name: string) => `Tela do projeto ${name}`,
     inDevelopment: "em desenvolvimento",
+    gallery: {
+      label: (name: string) => `Capturas de tela: ${name}`,
+      roleDescription: "carrossel",
+      slide: "imagem",
+      alt: (name: string, n: number) => `Tela ${n} do projeto ${name}`,
+      position: (n: number, total: number) => `Imagem ${n} de ${total}`,
+      enlarge: "Ampliar",
+      previous: "Imagem anterior",
+      next: "Próxima imagem",
+      close: "Fechar",
+    },
     items: {
       "libras-go": {
         description:
@@ -221,8 +231,18 @@ const en: Dictionary = {
     tagsLabel: "Technologies",
     viewSite: "View site",
     code: "Code",
-    coverAlt: (name: string) => `Screenshot of ${name}`,
     inDevelopment: "in development",
+    gallery: {
+      label: (name: string) => `${name} screenshots`,
+      roleDescription: "carousel",
+      slide: "slide",
+      alt: (name: string, n: number) => `${name} screenshot ${n}`,
+      position: (n: number, total: number) => `Image ${n} of ${total}`,
+      enlarge: "Enlarge",
+      previous: "Previous image",
+      next: "Next image",
+      close: "Close",
+    },
     items: {
       "libras-go": {
         description:

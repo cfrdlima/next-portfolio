@@ -154,6 +154,14 @@
   }
 }
 
+/* carrossel: rola por toque/trackpad sem mostrar a barra */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes marquee {
   to {
     transform: translateX(-50%);
