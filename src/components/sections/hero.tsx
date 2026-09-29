@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Start() {
+export default function Hero() {
   return (
     <section className="relative flex min-h-svh flex-col items-center justify-center gap-8 overflow-hidden pt-20 text-center">
       {/* Fundo: grade com máscara radial + brilho da cor de destaque */}
