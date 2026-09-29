@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="flex w-full scroll-mt-20 flex-col items-center py-24 md:py-32"
+      className="flex w-full flex-col items-center py-24 md:py-32"
     >
       <m.div
         initial={{ opacity: 0, y: 30 }}

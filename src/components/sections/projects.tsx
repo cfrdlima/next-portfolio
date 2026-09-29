@@ -115,7 +115,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="flex w-full scroll-mt-20 flex-col items-center gap-12 py-24 md:py-32"
+      className="flex w-full flex-col items-center gap-12 py-24 md:py-32"
     >
       <m.div
         initial={{ opacity: 0, y: 30 }}
@@ -146,7 +146,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
             className="flex flex-col gap-4 rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
           >
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex min-h-6 flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {project.category}
               </span>

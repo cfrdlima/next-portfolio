@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="flex w-full scroll-mt-20 items-center py-24 md:min-h-svh md:py-32"
+      className="flex w-full items-center py-24 md:min-h-svh md:py-32"
     >
       <div className="grid w-full gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Coluna esquerda */}

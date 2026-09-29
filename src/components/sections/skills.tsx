@@ -41,7 +41,7 @@ export default function Skills() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="flex w-full scroll-mt-20 flex-col items-center gap-12 overflow-hidden py-24 md:min-h-svh md:py-32"
+      className="flex w-full flex-col items-center gap-12 overflow-hidden py-24 md:min-h-svh md:py-32"
     >
       <div className="flex max-w-3xl flex-col items-center gap-4 text-center">
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
