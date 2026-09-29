@@ -1,18 +1,18 @@
 "use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { socialLinks } from "./social-links";
 
 export default function SocialMediaAside() {
   return (
-    <motion.aside
+    <m.aside
       className="fixed bottom-0 left-6 z-40 hidden flex-col items-center gap-2 xl:flex"
       initial={{ opacity: 0, x: -40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
     >
       {socialLinks.map(({ name, href, icon: Icon }, i) => (
-        <motion.div
+        <m.div
           key={name}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,16 +27,16 @@ export default function SocialMediaAside() {
           >
             <Icon size={20} />
           </Link>
-        </motion.div>
+        </m.div>
       ))}
 
       {/* Linha vertical até o rodapé da tela */}
-      <motion.div
+      <m.div
         initial={{ height: 0 }}
         animate={{ height: 96 }}
         transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
         className="w-px bg-border"
       />
-    </motion.aside>
+    </m.aside>
   );
 }

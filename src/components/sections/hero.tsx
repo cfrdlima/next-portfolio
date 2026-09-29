@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ export default function Hero() {
         className="pointer-events-none absolute left-1/2 top-1/3 -z-10 size-[28rem] -translate-x-1/2 rounded-full bg-brand/20 blur-3xl"
       />
 
-      <motion.span
+      <m.span
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -26,10 +26,10 @@ export default function Hero() {
       >
         <span className="size-2 rounded-full bg-emerald-500" aria-hidden />
         Desenvolvedor de Software · Web &amp; Mobile
-      </motion.span>
+      </m.span>
 
       {/* Título com efeito de digitação */}
-      <motion.h1
+      <m.h1
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -45,23 +45,25 @@ export default function Hero() {
           repeat={0}
           cursor={true}
         />
-      </motion.h1>
+      </m.h1>
 
-      <motion.p
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+      {/* sem fade: é o maior elemento da primeira tela (LCP) e precisa
+          aparecer já na primeira pintura */}
+      <m.p
+        initial={{ y: 16 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-2xl text-lg text-muted-foreground md:text-2xl"
       >
         E eu sou{" "}
         <span className="font-semibold text-brand">desenvolvedor</span>. Crio
         aplicações web e mobile com Java, Flutter e Next.js.
-      </motion.p>
+      </m.p>
 
-      <motion.div
+      <m.div
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.8 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
         className="flex w-full max-w-xs flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row"
       >
         <Button
@@ -76,18 +78,18 @@ export default function Hero() {
         <Button asChild size="lg" variant="outline">
           <Link href="#contact">Entrar em contato</Link>
         </Button>
-      </motion.div>
+      </m.div>
 
-      <motion.a
+      <m.a
         href="#about"
         aria-label="Rolar para a seção Sobre"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.4 }}
+        transition={{ delay: 1 }}
         className="absolute bottom-8 rounded-full p-2 text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowDown className="size-6" />
-      </motion.a>
+      </m.a>
     </section>
   );
 }

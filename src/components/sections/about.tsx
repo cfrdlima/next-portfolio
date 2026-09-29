@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const focusAreas = ["Front-end", "Mobile", "Java", "Flutter", "Next.js", "Firebase"];
 
@@ -11,7 +11,7 @@ export default function About() {
     >
       <div className="grid w-full gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Coluna esquerda */}
-        <motion.div
+        <m.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -34,10 +34,10 @@ export default function About() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
 
         {/* Coluna direita */}
-        <motion.div
+        <m.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -56,7 +56,7 @@ export default function About() {
             </strong>
             , trabalhando com Java, Flutter e Next.js.
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

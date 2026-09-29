@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -35,7 +35,7 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <motion.section
+    <m.section
       id="skills"
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function Skills() {
 
       <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
         {skillsData.map(({ title, icon: Icon, description, tools }, i) => (
-          <motion.div
+          <m.div
             key={title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,11 +88,11 @@ export default function Skills() {
                 </ul>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
       <SkillsTicker />
-    </motion.section>
+    </m.section>
   );
 }

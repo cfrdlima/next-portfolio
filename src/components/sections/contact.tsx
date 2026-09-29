@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check, Copy, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "../layout/social-links";
@@ -27,7 +27,7 @@ export default function Contact() {
       id="contact"
       className="flex w-full scroll-mt-20 flex-col items-center py-24 md:py-32"
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -91,7 +91,7 @@ export default function Contact() {
             </li>
           ))}
         </ul>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

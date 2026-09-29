@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
@@ -117,7 +117,7 @@ export default function Projects() {
       id="projects"
       className="flex w-full scroll-mt-20 flex-col items-center gap-12 py-24 md:py-32"
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -134,11 +134,11 @@ export default function Projects() {
           Uma seleção de projetos web, mobile e de games, dos profissionais aos
           acadêmicos.
         </p>
-      </motion.div>
+      </m.div>
 
       <ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, i) => (
-          <motion.li
+          <m.li
             key={project.name}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -196,7 +196,7 @@ export default function Projects() {
                 )}
               </div>
             )}
-          </motion.li>
+          </m.li>
         ))}
       </ul>
     </section>
