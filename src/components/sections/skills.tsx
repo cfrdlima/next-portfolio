@@ -8,8 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowUpRight, Gamepad2, Globe, Smartphone } from "lucide-react";
-import Link from "next/link";
+import { Gamepad2, Globe, Smartphone } from "lucide-react";
 import SkillsTicker from "../layout/skills-ticker";
 
 const skillsData = [
@@ -17,45 +16,20 @@ const skillsData = [
     title: "Desenvolvimento Web",
     icon: Globe,
     description: "Sites e aplicações web modernas, rápidas e responsivas.",
-    projects: [
-      { name: "Portfólio", href: "https://github.com/cfrdlima/next-portfolio" },
-      {
-        name: "Formatta.aq",
-        href: "https://formatta-aq.vercel.app",
-        status: "em desenvolvimento",
-      },
-      {
-        name: "Já vi esse filme?",
-        href: "https://github.com/cfrdlima/Ja-vi-esse-filme",
-      },
-    ],
+    tools: ["Next.js", "React", "TypeScript", "Tailwind", "Firebase"],
   },
   {
     title: "Desenvolvimento Mobile",
     icon: Smartphone,
     description:
-      "Apps multiplataforma para Android e iOS com Flutter e Firebase.",
-    projects: [
-      {
-        name: "JoinMe",
-        href: "https://github.com/JoinMeApp",
-        status: "em desenvolvimento",
-      },
-      { name: "Steam Watcher", href: "https://github.com/Steam-Watcher" },
-      {
-        name: "Roká Moká (Faculdade)",
-        href: "https://github.com/RokaMokaHub/rokaMokaApp",
-      },
-    ],
+      "Apps multiplataforma para Android e iOS, com back-end em Java quando preciso.",
+    tools: ["Flutter", "Dart", "Firebase", "Java", "Spring Boot"],
   },
   {
     title: "Desenvolvimento de Games",
     icon: Gamepad2,
     description: "Jogos em Unity, incluindo um jogo mobile para ensinar LIBRAS.",
-    projects: [
-      { name: "Libras Go", href: "https://librasgoweb.vercel.app" },
-      { name: "Flappy Bird", href: "https://github.com/cfrdlima/Flappy-Bird" },
-    ],
+    tools: ["Unity", "C#", "Supabase"],
   },
 ];
 
@@ -71,7 +45,7 @@ export default function Skills() {
     >
       <div className="flex max-w-3xl flex-col items-center gap-4 text-center">
         <span className="font-mono text-sm font-semibold uppercase tracking-widest text-brand">
-          02 · Skills &amp; Projetos
+          02 · Skills
         </span>
         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
           Minha caixinha de ferramentas
@@ -82,11 +56,8 @@ export default function Skills() {
         </p>
       </div>
 
-      <div
-        id="projects"
-        className="grid w-full scroll-mt-32 grid-cols-1 gap-6 md:grid-cols-3"
-      >
-        {skillsData.map(({ title, icon: Icon, description, projects }, i) => (
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
+        {skillsData.map(({ title, icon: Icon, description, tools }, i) => (
           <motion.div
             key={title}
             initial={{ opacity: 0, y: 30 }}
@@ -104,35 +75,14 @@ export default function Skills() {
                   {description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="mt-auto flex flex-col gap-3">
-                <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Projetos
-                </h3>
-                <ul className="flex flex-col divide-y">
-                  {projects.map((project) => (
-                    <li key={project.name}>
-                      {project.href ? (
-                        <Link
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={project.href}
-                          className="group/link flex items-center justify-between py-2.5 font-medium transition-colors hover:text-brand"
-                        >
-                          <span className="flex items-center gap-2">
-                            {project.name}
-                            {"status" in project && project.status && (
-                              <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand">
-                                {project.status}
-                              </span>
-                            )}
-                          </span>
-                          <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-brand" />
-                        </Link>
-                      ) : (
-                        <span className="block py-2.5 font-medium text-muted-foreground">
-                          {project.name}
-                        </span>
-                      )}
+              <CardContent className="mt-auto">
+                <ul className="flex flex-wrap gap-1.5" aria-label="Ferramentas">
+                  {tools.map((tool) => (
+                    <li
+                      key={tool}
+                      className="rounded-md bg-secondary px-2 py-0.5 font-mono text-xs text-secondary-foreground"
+                    >
+                      {tool}
                     </li>
                   ))}
                 </ul>
